@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('http://127.0.0.1:5500/frontend/json/ProstostojeciHladilniki.json')
+    fetch('../json/ProstostojeciHladilniki.json')
         .then(response => response.json())
         .then(data => {
             const fridgeList = document.getElementById('fridge-list');
