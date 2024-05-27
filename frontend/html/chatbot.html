@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Zmrzovalne omare in skrinje</title>
+    <title>ChatBot</title>
 
     <link rel="stylesheet" href="../css/hladilniki_prostostojeci.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/chatbot.css">
+    <link rel="stylesheet" href="../css/json_display.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flickity@2.3.1/dist/flickity.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flickity@2.3.1/dist/flickity.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -15,8 +16,9 @@
 
 </head>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flickity@2.3.1/dist/flickity.pkgd.min.js"></script>
-<script src="../js/hladilniki_prostostojeci.js"></script>
+<script src="../js/vgradni_hladilniki.js"></script>
 <script src="../js/chatbot.js"></script>
 <script src="../js/menu.js"></script>
 
@@ -56,10 +58,12 @@
                     <button class="nav-button">Izdelki</button>
                     <ul class="nav-items">
                         <li class="nav-item"><a href="#">Hlajenje</a>
-                            <ul class="inner-nav-items"> 
-                                <li class="inner-nav-item"><a href="hladilniki_prostostojeci.html">Prostostoječi hladilniki</a></li>
+                            <ul class="inner-nav-items">
+                                <li class="inner-nav-item"><a href="hladilniki_prostostojeci.html">Prostostoječi
+                                        hladilniki</a></li>
                                 <li class="inner-nav-item"><a href="hladilniki_vgradni.html">Vgradni hladilniki</a></li>
-                                <li class="inner-nav-item"><a href="zamrzovalniki.html">Zamrzovalne omare in skrinje</a></li>
+                                <li class="inner-nav-item"><a href="zamrzovalniki.html">Zamrzovalne omare in skrinje</a>
+                                </li>
                                 <li class="inner-nav-item"><a href="#">Ledomati</a></li>
                                 <li class="inner-nav-item"><a href="#">Dodatki za hlajenje</a></li>
                             </ul>
@@ -71,6 +75,7 @@
                         <li class="nav-item"><a href="#">Dom in osebna nega</a></li>
                         <li class="nav-item"><a href="#">Ogrevanje in hlajenje doma</a></li>
                         <li class="nav-item"><a href="#">Kuhinje</a></li>
+                        <li class="nav-item"><a href="chatbot.html">AI asistent</a></li>
                     </ul>
                 </li>
             </ul>
@@ -83,34 +88,40 @@
 <body>
 
     <div class="container">
-        <h1>Zmrzovalne omare in skrinje</h1>
+        <h1>AI asistent</h1>
         <div class="bot-container">
-            <div class="bot-container_bot_name">
+            <!-- <div class="bot-container_bot_name">
                 <p>Gorenjko</p>
             </div>
             <div class="bot-container_dynamic_question">
                 <div class="question">
                     <input type="text">
                 </div>
-            </div>
-            <div class="bot-container_dynamic_answers">
-                <div class="answer">
-                    ODGOVOR
-                </div>
-                <div class="answer">
-                    ODGOVOR
-                </div>
-                <div class="answer">
-                    ODGOVOR
-                </div>
-                <div class="answer">
-                    ODGOVOR
+            </div> -->
+            <div id="chatbot" class="chatbot">
+                <div id="chatContainer" class="chat-container">
+                    <div id="questionContainer" class="question-container"></div>
+                    <div id="answerContainer" class="answer-container"></div>
                 </div>
             </div>
+            <!-- <div class="bot-container_dynamic_answers">
+                <div class="answer">
+                    ODGOVOR
+                </div>
+                <div class="answer">
+                    ODGOVOR
+                </div>
+                <div class="answer">
+                    ODGOVOR
+                </div>
+                <div class="answer">
+                    ODGOVOR
+                </div>
+            </div> -->
         </div>
 
 
-        <!-- TODO popravit prikaz (menjat js da prikazuje ZmrzovalniHladilniki.json) -->
+        <!-- TODO popravit prikaz (menjat js da prikazuje ProstostojeciHladilniki.json) -->
         <div class="button-navigations">
             <button class="prev-button"><i class="fas fa-chevron-left"></i></button>
             <div id="fridge-list" class="items-list"></div>
