@@ -12,7 +12,7 @@ const combinedData = [];
 function readAndAppend(file) {
     const filePath = path.join(__dirname, file.filename);
     if (!fs.existsSync(filePath)) {
-        console.error(`File not found: ${file.filename}`);
+        console.error(`Datoteka ni najdena: ${file.filename}`);
         return;
     }
 
@@ -30,7 +30,7 @@ function readAndAppend(file) {
             combinedData.push(data);
         }
     } catch (error) {
-        console.error(`Error reading or parsing file ${file.filename}:`, error);
+        console.error(`Napaka pri branju ${file.filename}:`, error);
     }
 }
 
@@ -39,7 +39,7 @@ files.forEach(readAndAppend);
 const outputFilename = 'js/skup.json';
 try {
     fs.writeFileSync(outputFilename, JSON.stringify(combinedData, null, 4), 'utf8');
-    console.log(`JSON files combined and saved as ${outputFilename}`);
+    console.log(`JSON shranjen v ${outputFilename}`);
 } catch (error) {
-    console.error(`Error writing to file ${outputFilename}:`, error);
+    console.error(`Napaka pri pisanju ${outputFilename}:`, error);
 }
