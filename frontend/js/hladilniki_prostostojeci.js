@@ -72,11 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
     div.addEventListener('mouseenter', function () {
         inner_items.classList.add('opened');
     }, false);
-    
     div.addEventListener('mouseleave', function () {
         inner_items.classList.remove('opened');
     }, false);
-    
     for (var i = 0; i < links.length; i++) {
         links[i].addEventListener('click', function (e) {
             inner_items.classList.remove('opened');
