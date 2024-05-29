@@ -14,19 +14,40 @@ document.addEventListener("DOMContentLoaded", function () {
                     productElement.className = 'product';
                     productElement.innerHTML = `
                     
-                <div class=up_row>
+            <div class=up_row>
+
                     <div class=img_container>
                         <a href="${fridge.Več_informacij}"><img src="${fridge.Slika}" alt="Slika hladilnika ${fridge.Ime_hladilnika}"></a>
                     </div>
-                <h2 class="fridge-name">${fridge.Ime_hladilnika}</h2>
+
+                    <div class=stats_container>
+                        <h2 class="fridge-name">${fridge.Ime_hladilnika} - ${fridge.Serijska_stevilka}</h2> 
+                        <div class="fridge-specs">
+                            Razred energijske učinkovitosti: ${fridge.Razred_energijske_učinkovitosti}, 
+                            Način postavitve: ${fridge.Način_postavitve}, 
+                            Širina izdelka: ${fridge.Širina_izdelka},
+                            Višina izdelka: ${fridge.Višina_izdelka}
+                        </div>
+                    </div>
+
                 </div>
-                <p>Redna cena: ${fridge.Redna_Cena} €</p>
-                <ul class="fridge-specs">
-                    <li>Serijska številka: ${fridge.Serijska_stevilka}</li>
-                    <li>Kategorija: ${fridge.Kategorija}</li>
-                    <li>Način postavitve: ${fridge.Način_postavitve}</li>
-                    <li>Trenutna cena: ${fridge.Trenutna_Cena} €</li>
-                </ul>
+
+                <div class=efficency-class>
+                    <p>${fridge.Razred_energijske_učinkovitosti}</p>
+                </div>
+
+                <div class=bottom_row>
+                    <div class=checkbox>
+                        
+                    </div>
+                    <div class=stats_container>
+                        <div class="price-old">€ ${fridge.Trenutna_Cena}</div>
+                        <div class="price-new">€ ${fridge.Redna_Cena}</div>
+                    </div>
+                </div>
+                
+            </div>
+              
               `;
                     fridgeList.appendChild(productElement);
                 }

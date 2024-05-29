@@ -45,30 +45,92 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentQuestion = 0;
 
     function displayQuestion() {
-        const questionContainer = document.getElementById('questionContainer');
-        const answerContainer = document.getElementById('answerContainer');
-
-        questionContainer.textContent = questions[currentQuestion].question;
-        answerContainer.innerHTML = ''; 
-
+        const chatMessages = document.querySelector('.chat-messages');
+        const messageContainer = document.createElement('div');
+        messageContainer.className = 'message-container';
+        
+        const questionText = document.createElement('div');
+        questionText.textContent = questions[currentQuestion].question;
+        questionText.className = 'question-text';
+        messageContainer.appendChild(questionText);
+        
+        const answerContainer = document.createElement('div');
+        answerContainer.className = 'answer-container';
+        
         questions[currentQuestion].answers.forEach(answer => {
             const button = document.createElement('button');
             button.textContent = answer;
-            button.onclick = () => handleAnswer(answer);
+            button.className = 'answer-button';
+            button.onclick = () => handleAnswer(answer, messageContainer);
             answerContainer.appendChild(button);
         });
+        
+        messageContainer.appendChild(answerContainer);
+        chatMessages.appendChild(messageContainer);
     }
+    
+    function handleAnswer(answer, messageContainer) {
+        const userAnswer = document.createElement('div');
+        userAnswer.textContent = "Izbran odgovor: " + answer;
+        userAnswer.className = 'user-answer';
+        messageContainer.appendChild(userAnswer);
+        
+        Array.from(document.querySelectorAll('.answer-button')).forEach(button => {
+            button.remove();
+        });
+        
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            setTimeout(displayQuestion, 400); 
+        } else {
+            const thanksMessage = document.createElement('div');
+            thanksMessage.textContent = "Hvala za vaše odgovore!";
+            thanksMessage.className = 'thanks-message';
+            chatMessages.appendChild(thanksMessage);
+        }
+    }
+    
+    
+    
 
     function handleAnswer(answer) {
-        console.log("Izbran odgovor: ", answer); 
+        const chatMessages = document.querySelector('.chat-messages');
+    
+        const userAnswer = document.createElement('div');
+        userAnswer.textContent = "Izbran odgovor: " + answer;
+        userAnswer.className = 'user-answer';  
+        chatMessages.appendChild(userAnswer);
+    
+        Array.from(document.querySelectorAll('.answer-button')).forEach(button => {
+            button.remove();
+        });
+    
         if (currentQuestion < questions.length - 1) {
             currentQuestion++;
             displayQuestion();
         } else {
-            questionContainer.textContent = "Hvala za vaše odgovore!";
-            answerContainer.innerHTML = ''; 
+            const thanksMessage = document.createElement('div');
+            thanksMessage.textContent = "Hvala za vaše odgovore!";
+            thanksMessage.className = 'thanks-message';
+            chatMessages.appendChild(thanksMessage);
         }
     }
+    
 
     displayQuestion();
+
+    document.getElementById('chatbotButton').addEventListener('click', function() {
+        document.getElementById('chatbotContainer').style.visibility = 'visible';
+    });
+
+    document.getElementById('chatbotButton1').addEventListener('click', function() {
+        document.getElementById('chatbotContainer').style.visibility = 'visible';
+    });
+
+    document.getElementById('chatbotButtonClose').addEventListener('click', function() {
+        document.getElementById('chatbotContainer').style.visibility = 'hidden';
+    });
+    
+    
+    
 });
