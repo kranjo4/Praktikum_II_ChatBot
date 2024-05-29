@@ -1,7 +1,7 @@
 [
   {
-    "Ime_hladilnika": null,
-    "Serijska stevilka": "RBI409EP1",
+    "Ime_hladilnika": "Hladilnik ",
+    "Serijska_stevilka": "RBI409EP1",
     "Kategorija": "Hladilnik",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-B8A195361E7F77A5A4EC1AEF2790B5D6-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDkxMjQ1fGltYWdlL3BuZ3xhR1V5TDJneFlTODVNalkwTURjd056ZzNNVEF5TDAxQ1gxQkpUVWRmUWpoQk1UazFNell4UlRkR056ZEJOVUUwUlVNeFFVVkdNamM1TUVJMVJEWmZUVUZDUVVkUFVpMHpNREJYZURNd01FZ3wyMjlhZGY0ZTc5YTExZWFiOGY4NzlkNGMyNzkxN2RlZGRkYWI4NzEzODViNjM2Mzk2NjVlNzE4N2RjODFjZTk0",
     "Redna_Cena": "519.90",
@@ -66,8 +66,8 @@
     "EAN_koda": "3838782638886"
   },
   {
-    "Ime_hladilnika": null,
-    "Serijska stevilka": "RFI412EP1",
+    "Ime_hladilnika": "Hladilnik z zamrzovalnikom",
+    "Serijska_stevilka": "RFI412EP1",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-B7536D560F724312BCDC3F7CFB80DCE1-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDc3NDJ8aW1hZ2UvanBlZ3xhR0V4TDJneU5pODVNall6TlRJd01UVXpOak13TDAxQ1gxQkpUVWRmUWpjMU16WkVOVFl3UmpjeU5ETXhNa0pEUkVNelJqZERSa0k0TUVSRFJURmZUVUZDUVVkUFVpMHpNREJYZURNd01FZ3xkNjA5MGNhNWIwM2VhOTgyZTkxYTVmYjQ0YTc5MDliYmQyM2ZkZWIwNDI2N2JjNzY4NGJiMjI0YmQ0YTZjOGJi",
     "Redna_Cena": "519.90",
@@ -126,8 +126,8 @@
     "EAN_koda": "3838782762024"
   },
   {
-    "Ime_hladilnika": null,
-    "Serijska stevilka": "RI409EP1",
+    "Ime_hladilnika": "Hladilnik",
+    "Serijska_stevilka": "RI409EP1",
     "Kategorija": "Hladilnik",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-C2FD66650C832B7233E938CA70D3CA84-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDE4MDEyfGltYWdlL3BuZ3xhR1ZqTDJnMU5pODVNalkwTVRBMU9EUTRPRFl5TDAxQ1gxQkpUVWRmUXpKR1JEWTJOalV3UXpnek1rSTNNak16UlRrek9FTkJOekJFTTBOQk9EUmZUVUZDUVVkUFVpMHpNREJYZURNd01FZ3w1Y2E0YThiODhkYWVkMmRlNTEyZDUxYTQ0NTUwOWQ3MWRkMGI0YTVlZmJjMTA1ZTA2MzMyMDUwZWQ1OGI3Zjc2",
     "Redna_Cena": "499.90",
@@ -191,7 +191,7 @@
   },
   {
     "Ime_hladilnika": null,
-    "Serijska stevilka": "RFI4152P1",
+    "Serijska_stevilka": "RFI4152P1",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-60454DA0D483A75E90D1D5D4C57E0D3C-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDYwMDgwfGltYWdlL3BuZ3xhR1UxTDJoak15ODVNalkwTURBeU5qSTVOall5TDAxQ1gxQkpUVWRmTmpBME5UUkVRVEJFTkRnelFUYzFSVGt3UkRGRU5VUTBRelUzUlRCRU0wTmZUVUZDUVVkUFVpMHpNREJYZURNd01FZ3w3MDFmZDM4MTQyZjhiM2Q0ZTk3MGZmYmY3ZjZmZDhlM2RjZWVlYzMxMGQ3OTYyNWIyNDhlZGJkMmVhNmU1MmQ2",
     "Redna_Cena": "519.90",
@@ -251,7 +251,7 @@
   },
   {
     "Ime_hladilnika": null,
-    "Serijska stevilka": "RI412EE1",
+    "Serijska_stevilka": "RI412EE1",
     "Kategorija": "Hladilnik",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-EBC7D119F60D871F57FBD1A13462EE35-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDEyNTg2fGltYWdlL3BuZ3xhR0l6TDJnMk1DODVNemN5TlRFd016SXlOekU0TDAxQ1gxQkpUVWRmUlVKRE4wUXhNVGxHTmpCRU9EY3hSalUzUmtKRU1VRXhNelEyTWtWRk16VmZUVUZDUVVkUFVpMHpNREJYZURNd01FZ3w2OGViZTEzOTFiNDRiM2U1MDhiZGFjYTQ4ZTI3MWZlYmQ3N2NjZWZmZjhkZGRlNTgyZWJmYTFiN2IyYmFjYTQ5",
     "Redna_Cena": "589.90",
@@ -318,7 +318,7 @@
   },
   {
     "Ime_hladilnika": null,
-    "Serijska stevilka": "RBIU609EA1",
+    "Serijska_stevilka": "RBIU609EA1",
     "Kategorija": "Hladilnik",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-83D8E0E9C60512813B1BD6F77A265B45-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDM4NDYyfGltYWdlL3BuZ3xhREE1TDJoaVlTODVNalkwTVRBek1ETXdPREUwTDAxQ1gxQkpUVWRmT0RORU9FVXdSVGxETmpBMU1USTRNVE5DTVVKRU5rWTNOMEV5TmpWQ05EVmZUVUZDUVVkUFVpMHpNREJYZURNd01FZ3w1MjVjNDgxNTQ0MjBjZjllNjI2MWQxYmEwMzQ3ZjM2NzQwNzUxYzc5MzQzZDI0NzdjZTc5ODQyYjAxZTNiYzFk",
     "Redna_Cena": "519.90",
@@ -385,7 +385,7 @@
   },
   {
     "Ime_hladilnika": null,
-    "Serijska stevilka": "RIU609EA1",
+    "Serijska_stevilka": "RIU609EA1",
     "Kategorija": "Hladilnik",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-231467A4DEF534448CA9C300297B6A86-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDM1NjY1fGltYWdlL3BuZ3xhR0kyTDJnek9TODVNall6T1RNMk1UYzJNVFU0TDAxQ1gxQkpUVWRmTWpNeE5EWTNRVFJFUlVZMU16UTBORGhEUVRsRE16QXdNamszUWpaQk9EWmZUVUZDUVVkUFVpMHpNREJYZURNd01FZ3xhNWQ1ZGEzNmQwYmUzYTdmNjgzNWI4NGUyNjY3OTc3MTdiNDJmZDA3ZGI2YWRlOWNkYjJhMzhmNjRiNGM0NjYw",
     "Redna_Cena": "529.90",
@@ -450,7 +450,7 @@
   },
   {
     "Ime_hladilnika": "NoFrost DualAdvance",
-    "Serijska stevilka": "GDNRK5182A2",
+    "Serijska_stevilka": "GDNRK5182A2",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MABAGOR-300Wx300H-mabagor-imagelib-full-trim-1-0-103b1028b21551db7c8a68d008533e2e-233596-fpng.png?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDE4MzI4fGltYWdlL3BuZ3xhRE16TDJnNU15ODVOalF6T1RjM056QXpORFUwTDAxQlFrRkhUMUl0TXpBd1YzZ3pNREJJWHk5dFlXSmhaMjl5TDJsdFlXZGxiR2xpTDJaMWJHd3RkSEpwYlM4eEx6QXZNVEF6WWpFd01qaGlNakUxTlRGa1lqZGpPR0UyT0dRd01EZzFNek5sTW1WZk1qTXpOVGsyWDJad2JtY3VjRzVufGVmYWRkZWUxNzM0M2Q3MGRmZmQxZWUyNTk2ZTE1MmE2ZDZkZWY2OGUwZjllMjBjNmE4NDFiNGVhZWZmNjhmNDc",
     "Redna_Cena": "1.169.90",
@@ -536,7 +536,7 @@
   },
   {
     "Ime_hladilnika": null,
-    "Serijska stevilka": "RI418EE0",
+    "Serijska_stevilka": "RI418EE0",
     "Kategorija": "Hladilnik",
     "Slika": "https://gor.hgecdn.net/medias/MABAGOR-300Wx300H-mabagor-imagelib-full-trim-6-9-69f08a560782fcf564c9e864b53f587f-242235-fpng.png?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDMwMDQ0fGltYWdlL3BuZ3xhR00wTDJnME1pODVOakEzTURBeU9URTBPRFEyTDAxQlFrRkhUMUl0TXpBd1YzZ3pNREJJWHk5dFlXSmhaMjl5TDJsdFlXZGxiR2xpTDJaMWJHd3RkSEpwYlM4Mkx6a3ZOamxtTURoaE5UWXdOemd5Wm1ObU5UWTBZemxsT0RZMFlqVXpaalU0TjJaZk1qUXlNak0xWDJad2JtY3VjRzVufDIzM2E3NDE1MmQ0ODRlNTQyZTA0NjYxMzExN2MxZjk0MjJiNjU3MjBmZDIwMTg0MGEwMmVmMDg5Mzc0ZjA3Nzk",
     "Redna_Cena": "779.90",
@@ -603,7 +603,7 @@
   },
   {
     "Ime_hladilnika": null,
-    "Serijska stevilka": "RBI412EE1",
+    "Serijska_stevilka": "RBI412EE1",
     "Kategorija": "Hladilnik",
     "Slika": "https://gor.hgecdn.net/medias/MABAGOR-300Wx300H-mabagor-imagelib-full-trim-6-6-662984959d668a40c5969aefd1509306-242253-fpng.png?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDIwOTAxfGltYWdlL3BuZ3xhR1UwTDJneU9TODVOVGswTVRVM05EazRNems0TDAxQlFrRkhUMUl0TXpBd1YzZ3pNREJJWHk5dFlXSmhaMjl5TDJsdFlXZGxiR2xpTDJaMWJHd3RkSEpwYlM4Mkx6WXZOall5T1RnME9UVTVaRFkyT0dFME1HTTFPVFk1WVdWbVpERTFNRGt6TURaZk1qUXlNalV6WDJad2JtY3VjRzVufDExNDc5YTQ0ZDVkOTlkOTJmMmYxZTY3ODAyNDQ4YWNmYTAyNDQwMWI4YTEyNTQ2NmMyMDY3MjUyNDQwZTFjYTI",
     "Redna_Cena": "599.90",
@@ -674,7 +674,7 @@
   },
   {
     "Ime_hladilnika": null,
-    "Serijska stevilka": "RKI415EP1",
+    "Serijska_stevilka": "RKI415EP1",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-59DCEC8C8A8036223916811A042B9C85-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDEwNjM1NXxpbWFnZS9wbmd8YUdNMUwyaGhaQzg1TWpZME1UUTJPRGMwTXprNEwwMUNYMUJKVFVkZk5UbEVRMFZET0VNNFFUZ3dNell5TWpNNU1UWTRNVEZCTURReVFqbERPRFZmVFVGQ1FVZFBVaTB6TURCWGVETXdNRWd8MTI5YWM0MTQwM2Q1ZTIwNzg3MGVjNTlmMmI4OGE0ODQwYWM0ZTUxYzE5YjM4ZWFiNmY3YTVkZWIxYzI2NWZiZA",
     "Redna_Cena": "619.90",
@@ -732,7 +732,7 @@
   },
   {
     "Ime_hladilnika": null,
-    "Serijska stevilka": "RKI418EE1",
+    "Serijska_stevilka": "RKI418EE1",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MABAGOR-300Wx300H-mabagor-imagelib-full-trim-8-4-849eff356a285b89d9d0e44b58e64826-188341-fpng.png?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDEyOTc0fGltYWdlL3BuZ3xhR1ZtTDJoaE5DODVOamc1TVRBNU16TXhPVGs0TDAxQlFrRkhUMUl0TXpBd1YzZ3pNREJJWHk5dFlXSmhaMjl5TDJsdFlXZGxiR2xpTDJaMWJHd3RkSEpwYlM4NEx6UXZPRFE1WldabU16VTJZVEk0TldJNE9XUTVaREJsTkRSaU5UaGxOalE0TWpaZk1UZzRNelF4WDJad2JtY3VjRzVufGNmNjhlMzE3ZWNhYzRjZGRlNDgyNGQwYTcyMjJlMGQ3Zjc1NGI0YTMxZjA4NDAxOTU2NDk0YjcyYTczMGNkODg",
     "Redna_Cena": "729.90",
@@ -811,7 +811,7 @@
   },
   {
     "Ime_hladilnika": "NoFrost DualAdvance",
-    "Serijska stevilka": "NRKI418EP1",
+    "Serijska_stevilka": "NRKI418EP1",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MABAGOR-300Wx300H-mabagor-imagelib-full-trim-6-3-63c019b12b8ecea666621c8fcfcbbaa4-239674-2.png?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDY2NTE5fGltYWdlL3BuZ3xhR1poTDJoak1pODVOVFl6TVRjek5qZ3pNak13TDAxQlFrRkhUMUl0TXpBd1YzZ3pNREJJWHk5dFlXSmhaMjl5TDJsdFlXZGxiR2xpTDJaMWJHd3RkSEpwYlM4Mkx6TXZOak5qTURFNVlqRXlZamhsWTJWaE5qWTJOakl4WXpobVkyWmpZbUpoWVRSZk1qTTVOamMwWHpJdWNHNW58NzYyOTdjZmM4YTg2ZGUyYWNmNTRjZGI4ZGE4ZTY3NmYzYzA0NjdhMWY0NGQ2YjY2MTMwMjM1NTQyNjcwZTgxMg",
     "Redna_Cena": "899.90",
@@ -883,7 +883,7 @@
   },
   {
     "Ime_hladilnika": null,
-    "Serijska stevilka": "RBI418EE0",
+    "Serijska_stevilka": "RBI418EE0",
     "Kategorija": "Hladilnik",
     "Slika": "https://gor.hgecdn.net/medias/MABAGOR-300Wx300H-mabagor-imagelib-full-trim-0-f-0f3fd500cd98bb5aaf678ec1e34e68bd-242256-fpng.png?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDE1MTQxfGltYWdlL3BuZ3xhR00xTDJnNE5TODVOVGswTVRVek5UWTJNak00TDAxQlFrRkhUMUl0TXpBd1YzZ3pNREJJWHk5dFlXSmhaMjl5TDJsdFlXZGxiR2xpTDJaMWJHd3RkSEpwYlM4d0wyWXZNR1l6Wm1RMU1EQmpaRGs0WW1JMVlXRm1OamM0WldNeFpUTTBaVFk0WW1SZk1qUXlNalUyWDJad2JtY3VjRzVufGJjYWNlYjU1NDZhMTIwZmVkMDBmMTIwNzRlMGYwM2Y5OTM4YmU0Mjg4MjVlMzY0ODU0ZmZiZWUxYWJjZjc5YjM",
     "Redna_Cena": "869.90",
@@ -956,7 +956,7 @@
   },
   {
     "Ime_hladilnika": null,
-    "Serijska stevilka": "RKI218EA0",
+    "Serijska_stevilka": "RKI218EA0",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MABAGOR-300Wx300H-mabagor-imagelib-full-trim-2-e-2ed7a3380c2a0866ba1f8b5be15c40a9-238910-fpng.png?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDE4MzA1fGltYWdlL3BuZ3xhRGN4TDJobU15ODVOalUzTnpreE56QTVNakUwTDAxQlFrRkhUMUl0TXpBd1YzZ3pNREJJWHk5dFlXSmhaMjl5TDJsdFlXZGxiR2xpTDJaMWJHd3RkSEpwYlM4eUwyVXZNbVZrTjJFek16Z3dZekpoTURnMk5tSmhNV1k0WWpWaVpURTFZelF3WVRsZk1qTTRPVEV3WDJad2JtY3VjRzVufDVjZmRiZDRmMzc1NjIzN2E0YjRhMjFhOWZiOTAxZTBkMjIyMGYyMTJhMjYyNDdjYmQ2ZGIxNmRlNWI3ZTE1ZDA",
     "Redna_Cena": "829.90",
@@ -1037,7 +1037,7 @@
   },
   {
     "Ime_hladilnika": "NoFrost DualAdvance",
-    "Serijska stevilka": "NRKI218EE1",
+    "Serijska_stevilka": "NRKI218EE1",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-B819788A4972C8DA28CE84680C4D8A14-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDE2NTcyfGltYWdlL3BuZ3xhRGRrTDJobFl5ODVNall6T1RZNE5EZzFOREEyTDAxQ1gxQkpUVWRmUWpneE9UYzRPRUUwT1RjeVF6aEVRVEk0UTBVNE5EWTRNRU0wUkRoQk1UUmZUVUZDUVVkUFVpMHpNREJYZURNd01FZ3xlYTYxZmE0Y2NiZjY1M2JmZjQyMzZhNjgwODhhYzQzYTYyYWQ1NGRjYmIwNDFiMzVlMGMyNTg3ZTEwNDUwNWI3",
     "Redna_Cena": "949.90",
@@ -1115,7 +1115,7 @@
   },
   {
     "Ime_hladilnika": "NoFrost DualAdvance",
-    "Serijska stevilka": "NRKI419EP1",
+    "Serijska_stevilka": "NRKI419EP1",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-D9B138E2D7EAE2EA912736D5072CD0DF-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDEyMjY3fGltYWdlL3BuZ3xhR001TDJoaVpDODVORFl3TnpZM05Ea3dNRGM0TDAxQ1gxQkpUVWRmUkRsQ01UTTRSVEpFTjBWQlJUSkZRVGt4TWpjek5rUTFNRGN5UTBRd1JFWmZUVUZDUVVkUFVpMHpNREJYZURNd01FZ3wyMGE1MTM1ZTZkYmFhYWRhNjQ2NjgyYzNmYzI2MDIwNjljMTU4YjFlYjE2ZmI1NjRkYjAzNjI2MTIzMjlkYjgx",
     "Redna_Cena": "949.90",
@@ -1185,7 +1185,7 @@
   },
   {
     "Ime_hladilnika": null,
-    "Serijska stevilka": "RI518EA1",
+    "Serijska_stevilka": "RI518EA1",
     "Kategorija": "Hladilnik",
     "Slika": "https://gor.hgecdn.net/medias/MABAGOR-300Wx300H-mabagor-imagelib-full-trim-1-6-16135f89db65049093e99603a67b10fc-258124-fpng.png?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDEzOTE0fGltYWdlL3BuZ3xhRFUxTDJobVpDOHhNVEE1TmpRNU1EQTBPVFUyTmk5TlFVSkJSMDlTTFRNd01GZDRNekF3U0Y4dmJXRmlZV2R2Y2k5cGJXRm5aV3hwWWk5bWRXeHNMWFJ5YVcwdk1TODJMekUyTVRNMVpqZzVaR0kyTlRBME9UQTVNMlU1T1RZd00yRTJOMkl4TUdaalh6STFPREV5TkY5bWNHNW5MbkJ1Wnd8YjFkZmY5MTEyYjJiYWU3MzBjYWM3NmQxOWY3ZTc2NGE1N2Q3OGRlZGQwOTNlYTNlYWYzNWRkYzljZTUzYWFjYw",
     "Redna_Cena": "969.90",
@@ -1259,7 +1259,7 @@
   },
   {
     "Ime_hladilnika": "NoFrost DualAdvance",
-    "Serijska stevilka": "NRKI218EA0",
+    "Serijska_stevilka": "NRKI218EA0",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MABAGOR-300Wx300H-mabagor-imagelib-full-trim-1-6-169fce6f640fef72acfef4c3411f818e-238908-fpng.png?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDE3Njc5fGltYWdlL3BuZ3xhRGd4TDJnNFl5ODVOalUzTnpnNU1ESXlNak00TDAxQlFrRkhUMUl0TXpBd1YzZ3pNREJJWHk5dFlXSmhaMjl5TDJsdFlXZGxiR2xpTDJaMWJHd3RkSEpwYlM4eEx6WXZNVFk1Wm1ObE5tWTJOREJtWldZM01tRmpabVZtTkdNek5ERXhaamd4T0dWZk1qTTRPVEE0WDJad2JtY3VjRzVufDc0NTNmMzkzMzk5ODdmMmE2MWQyMmZjNWQ2Y2QwYjg4ZmEwNjA0OGUxMjVlYmEzNWM1ZDJkYTk0YTNmNDQxYWE",
     "Redna_Cena": "1.039.90",
@@ -1343,7 +1343,7 @@
   },
   {
     "Ime_hladilnika": "NoFrost DualAdvance",
-    "Serijska stevilka": "NRKI518EA1",
+    "Serijska_stevilka": "NRKI518EA1",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-F744210D1A866D384A18C9098666CD58-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDE5ODEwfGltYWdlL3BuZ3xhREEwTDJoaFl5ODVNalkwTURjek5qQTFNVFV3TDAxQ1gxQkpUVWRmUmpjME5ESXhNRVF4UVRnMk5rUXpPRFJCTVRoRE9UQTVPRFkyTmtORU5UaGZUVUZDUVVkUFVpMHpNREJYZURNd01FZ3w0ODJjYjE5N2MwNTEyYTg1OTU3ZjI3ZmQzNjRjZTRlNDM2ZTdiYmU3ZWY3NmM0ZjNkYzE0N2Y1Yzk2ODYzMDY0",
     "Redna_Cena": "1.169.90",
@@ -1428,7 +1428,7 @@
   },
   {
     "Ime_hladilnika": "NoFrost DualAdvance",
-    "Serijska stevilka": "NRKI2181A1",
+    "Serijska_stevilka": "NRKI2181A1",
     "Kategorija": "Hladilnik z zamrzovalnikom",
     "Slika": "https://gor.hgecdn.net/medias/MB-PIMG-F744210D1A866D384A18C9098666CD58-MABAGOR-300Wx300H?context=bWFzdGVyfG1hYmFnb3Jwcm9kdWN0aW1hZ2VzfDE5ODEwfGltYWdlL3BuZ3xhREEwTDJoaFl5ODVNalkwTURjek5qQTFNVFV3TDAxQ1gxQkpUVWRmUmpjME5ESXhNRVF4UVRnMk5rUXpPRFJCTVRoRE9UQTVPRFkyTmtORU5UaGZUVUZDUVVkUFVpMHpNREJYZURNd01FZ3w0ODJjYjE5N2MwNTEyYTg1OTU3ZjI3ZmQzNjRjZTRlNDM2ZTdiYmU3ZWY3NmM0ZjNkYzE0N2Y1Yzk2ODYzMDY0",
     "Redna_Cena": "989.90",
