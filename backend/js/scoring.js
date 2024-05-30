@@ -24,6 +24,7 @@ function readJSON(file) {
 
 
 function calculateScore(scoreArr, answer) {
+    console.log(1);
     const products = readJSON(allItems);
     if (!products) return [];
 
@@ -60,7 +61,7 @@ function calculateScore(scoreArr, answer) {
         }
     });
 
-
+    console.log(newScoreArr);
     return newScoreArr;
 }
 
