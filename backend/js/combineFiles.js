@@ -10,7 +10,7 @@ const files = [
 const combinedData = [];
 
 function readAndAppend(file) {
-    const filePath = path.join(__dirname, file.filename);
+    const filePath = path.join(__dirname,'..','json', file.filename);
     if (!fs.existsSync(filePath)) {
         console.error(`Datoteka ni najdena: ${file.filename}`);
         return;
@@ -36,7 +36,7 @@ function readAndAppend(file) {
 
 files.forEach(readAndAppend);
 
-const outputFilename = 'js/skup.json';
+const outputFilename = 'json/skup.json';
 try {
     fs.writeFileSync(outputFilename, JSON.stringify(combinedData, null, 4), 'utf8');
     console.log(`JSON shranjen v ${outputFilename}`);
