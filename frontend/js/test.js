@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function sendAnswer(answer, callback) {
-    const currentScoreArr = JSON.parse(window.sessionStorage.getItem('Fridges'));
-    console.log(answer.value);
+    const currentScoreArr = JSON.parse(window.sessionStorage.getItem('score'));
+    // console.log(answer.value);
 
     const data = {
         answer,
