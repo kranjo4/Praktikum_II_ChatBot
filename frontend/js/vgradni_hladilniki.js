@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                     </div>
                     <div class=stats_container>
-                        <div class="price-old">€ ${fridge.Trenutna_Cena}</div>
-                        <div class="price-new">€ ${fridge.Redna_Cena}</div>
+                        <div class="price-old">€ ${fridge.Redna_Cena}</div>
+                        <div class="price-new">€ ${fridge.Trenutna_Cena}</div>
                     </div>
                 </div>
                 

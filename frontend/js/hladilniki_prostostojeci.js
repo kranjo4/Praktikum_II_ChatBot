@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     productElement.className = 'product';
                     productElement.innerHTML = `
               <h2 class="fridge-name">${fridge.Ime_hladilnika}</h2>
-              <p>Redna cena: ${fridge.Redna_Cena} €</p>
+              <p>Redna cena: ${fridge.Redna_CenaTrenutna_Cena} €</p>
               <ul class="fridge-specs">
                 <li>Serijska številka: ${fridge.Serijska_stevilka}</li>
                 <li>Kategorija: ${fridge.Kategorija}</li>
                 <li>Način postavitve: ${fridge.Način_postavitve}</li>
-                <li>Trenutna cena: ${fridge.Trenutna_Cena} €</li>
+                <li>Trenutna cena: ${fridge.Redna_Cena} €</li>
               </ul>
             `;
                     fridgeList.appendChild(productElement);
