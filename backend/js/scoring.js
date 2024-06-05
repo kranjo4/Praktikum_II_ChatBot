@@ -38,16 +38,34 @@ function calculateScore(scoreArr, answer) {
             let atribute = answer.atributes
             let newScore = (matchingProduct.score || 0)
             for (let i = 0; i < answer.atributes.length; i++) {
-             
-                let productString = product[atribute[i]]
-                let productValue = product[atribute[i]]
-                if(typeof productString == "string"){
-                    let stringArr = productString.split(' ')
-                    productValue = stringArr[0]
+            
+                switch (atribute[i].type) {
+                    case "number":
+                        {
+                            let productString = product[atribute[i].atribute]
+                            let productValue = product[atribute[i].atribute]
+                            if(typeof productString == "string"){
+                                let stringArr = productString.split(' ')
+                                productValue = stringArr[0]
+                            }
+
+                            let currentScore = Math.abs( Math.floor((answer.value[i] - productValue) / 100));
+                            newScore += currentScore;
+                        }
+                        
+                        break;
+                    case "compare":
+                            if(!(answer.value[i] == product[atribute[i].atribute])){
+                                newScore += 10
+                            }                       
+                        break;
+                
+                    default:
+                        break;
                 }
 
-                let currentScore = Math.floor((answer.value[i] - productValue) / 100);
-                newScore += currentScore;
+             
+                
                 
             }
             
@@ -61,7 +79,7 @@ function calculateScore(scoreArr, answer) {
         }
     });
 
-    console.log(newScoreArr);
+    // console.log(newScoreArr);
     return newScoreArr;
 }
 
