@@ -121,7 +121,7 @@ function displayFridges() {
   );
   const container = document.getElementById("topItems");
   // container.innerHTML = ""
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 3; i++) {
     // const element = sortedScore[i];
     // let div = document.createElement('div')
     // div.innerHTML = `${element.Serijska_stevilka}: ${element.score}`

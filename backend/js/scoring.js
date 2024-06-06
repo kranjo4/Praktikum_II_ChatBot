@@ -24,42 +24,61 @@ function readJSON(file) {
 
 
 function calculateScore(scoreArr, answer) {
-    console.log(1);
     const products = readJSON(allItems);
     if (!products) return [];
 
     let newScoreArr = [];
-
     products.forEach(product => {
         const matchingProduct = scoreArr.find(scoringProduct => scoringProduct.Serijska_stevilka === product.Serijska_stevilka);
 
         if (matchingProduct) {
 
-            let atribute = answer.atributes
+            let atributes = answer.atributes
             let newScore = (matchingProduct.score || 0)
             for (let i = 0; i < answer.atributes.length; i++) {
-            
-                switch (atribute[i].type) {
+                let atribute = atributes[i]
+                let curAtribute = atribute.atribute
+                switch (atribute.type) {
                     case "number":
                         {
-                            let productString = product[atribute[i].atribute]
-                            let productValue = product[atribute[i].atribute]
+                            let productString = product[curAtribute]
+                            let productValue = product[curAtribute]
                             if(typeof productString == "string"){
                                 let stringArr = productString.split(' ')
                                 productValue = stringArr[0]
                             }
+                            let tenPercent = answer.value[i] * 0.10
 
-                            let currentScore = Math.abs( Math.floor((answer.value[i] - productValue) / 100));
+                            let currentScore = (Math.abs(productValue - answer.value[i]) / tenPercent);
+
+                            // if (productValue > answer.value[i]) {
+                            //     currentScore *= 2;
+                            // }
+            
                             newScore += currentScore;
                         }
                         
                         break;
                     case "compare":
-                            if(!(answer.value[i] == product[atribute[i].atribute])){
+                            if(!(answer.value[i] == product[curAtribute])){
                                 newScore += 10
                             }                       
                         break;
-                
+                    
+                    case "class":
+                        if(answer.value[i] == "Yes"){
+
+                            let sortedClass = (getUniqueRazredHrupa(products, curAtribute)).sort()
+                            
+                            for (let i = 0; i < sortedClass.length; i++) {
+                                if(product[curAtribute] == sortedClass[i]){
+                                    newScore += i*2
+                                }
+                                
+                            }
+                        }
+                        
+                            break;
                     default:
                         break;
                 }
@@ -82,6 +101,19 @@ function calculateScore(scoreArr, answer) {
     // console.log(newScoreArr);
     return newScoreArr;
 }
+
+function getUniqueRazredHrupa(products, atributes) {
+    const uniqueValues = new Set();
+
+    products.forEach(product => {
+        if (product[atributes]) {
+            uniqueValues.add(product[atributes]);
+        }
+    });
+
+    return Array.from(uniqueValues);
+}
+
 
 module.exports = {
     readJSON,

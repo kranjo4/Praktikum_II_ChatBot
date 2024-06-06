@@ -1,5 +1,14 @@
 [
   {
+      "question": "Vprasanje 4 (class)",
+      "atributes": [{"atribute":"Razred_energijske_učinkovitosti", "type": "class"}], 
+      "awnsers": [
+        { "text": "Yes", "value": ["Yes"] },
+        { "text": "No", "value": ["No"] }
+        
+      ]
+    },
+  {
     "question": "Vprasanje 1 (budget)",
     "atributes": [{"atribute":"Trenutna_Cena", "type": "number"}], 
     "awnsers": [
