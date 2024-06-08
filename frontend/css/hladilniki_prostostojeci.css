@@ -12,7 +12,7 @@ body {
 .product {
   display: flex;
   flex-direction: column;
-  /* height: 17rem;  */
+  height: 27rem; 
   width: 20rem;
   border: 1px solid #ccc;
   padding: 10px;
@@ -75,7 +75,6 @@ body {
   border: solid;
   color: #9da6ab;
   padding: 0.5rem 6rem 0.5rem 6rem;
-  /* padding-left: 3rem; */
 }
 
 .bot-container_dynamic_answers {
@@ -94,24 +93,28 @@ body {
 
 .button-navigations {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.button-navigations button {
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 10px;
+.button-navigations svg {
+  width: 2rem; 
+  height: 2rem;
+}
+
+.button-navigations image{
+  width: 2rem; 
+  height: 2rem;
   cursor: pointer;
 }
 
-.prev-button,
+.button-navigations .prev-button,
 .next-button {
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
 }
 
-.button-navigations button:hover {
-  background-color: #444;/
+.button-container {
+  display: flex;
+  align-items: center;
 }
-

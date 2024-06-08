@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>ChatBot</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/hladilniki_prostostojeci.css">
+
+    <!-- <link rel="stylesheet" href="../css/hladilniki_prostostojeci.css"> -->
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/chatbot.css">
     <link rel="stylesheet" href="../css/json_display.css">
@@ -15,13 +15,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flickity@2.3.1/dist/flickity.pkgd.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flickity@2.3.1/dist/flickity.pkgd.min.js"></script> -->
 <script src="../js/vgradni_hladilniki.js"></script>
 <script src="../js/chatbot.js"></script>
 <script src="../js/menu.js"></script>
 
-<div class="menu">
+<!-- <div class="menu">
     <div class="menu_container">
         <div class="header_logo">
             <div class="logo">
@@ -80,7 +80,7 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->
 
 </head>
 
@@ -88,10 +88,11 @@
 
     <div class="container">
         <div class="bot-container">
-   
+
             <div class="gorenjko">
                 <div class="img-assistant">
-                    <img src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/348231138_262689612986791_4787066951716824225_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=INxUSMHEuYgQ7kNvgGu2tor&_nc_ht=scontent-vie1-1.xx&oh=00_AYAg_FJYWzQEK3YW1sTcwGYOSv0wcRFulTp2x-NtJwFSFQ&oe=665B5D03" alt="avatar">
+                    <img src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/348231138_262689612986791_4787066951716824225_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=6ZMnjrO-ACsQ7kNvgEhxRZA&_nc_ht=scontent-vie1-1.xx&oh=00_AYAT8amWOzzjm0VBKgF9eJCZFkbfnSySLbbJ8AppN34ejA&oe=6665B0C3"
+                        alt="avatar">
                 </div>
                 <div class="title-assistant">
                     <h2>Meet Gorenjko by Gorenje</h2>
@@ -103,39 +104,56 @@
                     <button id="chatbotButton1" class="btn">
                         Začni
                     </button>
-                    <a href="" class="btn1">
-                        Preberi si o Gorenjkotu 
-                    </a>
-                    
+                    <!-- <a href="" class="btn1">
+                        Preberi si o Gorenjkotu
+                    </a> -->
+
                 </div>
             </div>
         </div>
 
 
         <div class="button-navigations">
-            <button class="prev-button"><i class="fas fa-chevron-left"></i></button>
+            <div class="button-container">
+                <button class="prev-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <image
+                            xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAB7CAMAAAD3/6a/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAASFBMVEX////KztDm6OnGysy3vL+8wcTn6eq9wsXq7Oy+wsXs7u/Lz9HHy83Hy87l5+i6v8K5v8Le4OLi5OXJzc/Izc/JztC3vL////+xEWpUAAAAFnRSTlMAdyuCqJ0mmCGYG3J9fSujo0E2d313Q8SL6wAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBgcKGCsHZBqZAAAAdElEQVRo3u3XtxGAQBBD0TtYvHfbf6nAHBUgIuYrUKaXKwQlMZPmV3IrSlVwr2pVcG9aVXDrZCEiICAgICAgICAgICAgIHwo9Enw4bUQxikR84KBgYGBgYGBgYGBgYGB8QNjVQ3b3gvJsF0RbsOEp/8Yx90nzBdJEHlXelIAAAAASUVORK5CYII=" />
+                    </svg>
+                </button>
+            </div>
             <div id="fridge-list" class="items-list"></div>
-            <button class="next-button"><i class="fas fa-chevron-right"></i></button>
+            <div class="button-container">
+                <button class="next-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <image
+                            xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAB7CAMAAAD3/6a/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAASFBMVEX////JztDl5+jHy863vL+6v8LIzc/Jzc/i5OW5v8Le4OLHy83KztDGyszLz9Hs7u++wsXq7Oy9wsXn6eq8wcTm6Om3vL////+K/scdAAAAFnRSTlMAdyt9qKN9dzajQX13gnIbmCGYJp0r+uIRzAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBgcKGAilA2vrAAAAbklEQVRo3u3MyQ2AMADEwAXCHW5I/6WClA5YXsj+e6SnopRZFWrTaEJKntE+gmd0fUquMWBgYGBgYGBgYGBgYGBg/MCoMhHG10IMWZgQEBAQEBAQEBAQEBAQED4UZlvQsrqCtO2uIB2nK0hXtPYbVUlFlTVyyXsAAAAASUVORK5CYII=" />
+                    </svg>
+                </button>
+            </div>
         </div>
 
-        
+
         <button id="chatbotButton" class="chatbot-button">
-                <img src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/348231138_262689612986791_4787066951716824225_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=INxUSMHEuYgQ7kNvgGu2tor&_nc_ht=scontent-vie1-1.xx&oh=00_AYAg_FJYWzQEK3YW1sTcwGYOSv0wcRFulTp2x-NtJwFSFQ&oe=665B5D03" alt="avatar">
+            <img src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/348231138_262689612986791_4787066951716824225_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=6ZMnjrO-ACsQ7kNvgEhxRZA&_nc_ht=scontent-vie1-1.xx&oh=00_AYAT8amWOzzjm0VBKgF9eJCZFkbfnSySLbbJ8AppN34ejA&oe=6665B0C3"
+                alt="avatar">
         </button>
         <div id="chatbotContainer" class="chatbot-container hidden">
-            <div class="chatbot-header">
-                <h2>Gorenjko</h2>
-                <span>Zdravo jaz sem vaš asistent.</span>
-            </div>
             <div class="chat-messages">
-                    <div id="chatContainer" class="chat-container">
-                        <div id="answerContainer" class="answer-container"></div>
-                    </div>
-                    <div id="questionContainer" class="question-container"></div>
+                <div class="chatbot-header">
+                    <h2>Gorenjko</h2>
+                    <span>Zdravo jaz sem vaš asistent.</span>
+                </div>
+                <div id="chatContainer" class="chat-container">
+                    <div id="answerContainer" class="answer-container"></div>
+                </div>
+                <div id="questionContainer" class="question-container"></div>
             </div>
-            <button id="chatbotButtonClose" class="btn">Close</button>
+            <div class="chatbotButtonCloseContainer">
+                <button id="chatbotButtonClose" class="btn">Close</button>
+            </div>
         </div>
-        
+
     </div>
 
 </body>

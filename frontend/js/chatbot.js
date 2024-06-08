@@ -69,27 +69,6 @@ document.addEventListener("DOMContentLoaded", function() {
         chatMessages.appendChild(messageContainer);
     }
     
-    function handleAnswer(answer, messageContainer) {
-        const userAnswer = document.createElement('div');
-        userAnswer.textContent = "Izbran odgovor: " + answer;
-        userAnswer.className = 'user-answer';
-        messageContainer.appendChild(userAnswer);
-        
-        Array.from(document.querySelectorAll('.answer-button')).forEach(button => {
-            button.remove();
-        });
-        
-        if (currentQuestion < questions.length - 1) {
-            currentQuestion++;
-            setTimeout(displayQuestion, 400); 
-        } else {
-            const thanksMessage = document.createElement('div');
-            thanksMessage.textContent = "Hvala za vaše odgovore!";
-            thanksMessage.className = 'thanks-message';
-            chatMessages.appendChild(thanksMessage);
-        }
-    }
-    
     
     
 
@@ -107,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
         if (currentQuestion < questions.length - 1) {
             currentQuestion++;
-            displayQuestion();
+            setTimeout(displayQuestion, 100);
         } else {
             const thanksMessage = document.createElement('div');
             thanksMessage.textContent = "Hvala za vaše odgovore!";
