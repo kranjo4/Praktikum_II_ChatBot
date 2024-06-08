@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             prevButton.addEventListener('click', function () {
                 if (currentPosition > 0) {
-                    currentPosition -= 1;
+                    currentPosition -= 1; 
                     showFridges(currentPosition, currentPosition + 3);
                 }
             });

@@ -48,7 +48,7 @@ app.post("/send-answer", (req, res) => {
 
 
     let newScoreArr = []
-    console.log(currentScoreArr);
+    // console.log(currentScoreArr);
 
     if (currentScoreArr && answer) {
         newScoreArr = calculateScore(currentScoreArr, answer);
