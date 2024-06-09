@@ -8,13 +8,14 @@ body {
     gap: 10px;
     padding: 20px;
     overflow-x: hidden;
+    max-width: 80vw;
 }
 
 .product {
     display: flex;
     flex-direction: column;
     height: 30rem;
-    min-width: 23rem;
+    min-width: 23vw;
     border: 1px solid #ccc;
     padding: 10px;
     /* background-color: #f9f9f9; */
@@ -126,7 +127,7 @@ body {
 
 .button-navigations .prev-button,
 .next-button {
-    display: flex;
+    display: none;
     align-items: center;
     background-color: transparent;
     border: none;
@@ -341,13 +342,21 @@ a:hover {
     max-width: 190px;
 }
 
+@media (max-width: 900px) {
+    #fridge-list {
+        /* grid-template-columns: repeat(2, 1fr); */
+        max-width: 80vw;
+    }
+
+    .product {
+        min-width: 37vw;
+    }
+
+
+}
+
 
 @media screen and (max-width: 767px) {
-
-    .button-navigations {
-        display: flex;
-        justify-content: center;
-    }
 
     #fridge-list {
         display: flex;
@@ -363,7 +372,7 @@ a:hover {
     .feature-icon {
         /* position: relative; */
         display: flex;
-        flex: 1 0 33%;
+        flex: 1 0 34%;
         flex-direction: column;
         align-items: center;
 
@@ -422,15 +431,8 @@ a:hover {
         color: #5A6870;
         font-weight: 400;
     }
-}
 
-
-@media screen and (max-width: 600px) {
-
-
-    #fridge-list {
-        max-width: 80vw;
+    .button-container  {
+        display: none;
     }
-
-    
 }

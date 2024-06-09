@@ -5,13 +5,21 @@ document.addEventListener("DOMContentLoaded", function () {
             const fridgeList = document.getElementById('fridge-list');
             let currentPosition = 0;
 
+            document.addEventListener('answerSelected', function(e) {
+                console.log("Event caught", e.detail.message);
+                const prevButton = document.querySelector('.button-navigations .prev-button');
+                const nextButton = document.querySelector('.button-navigations .next-button');
+                console.log('Changing button displays');
+                prevButton.style.display = 'flex';
+                nextButton.style.display = 'flex';
+            });
+            
+
             function showFridges(startIndex, endIndex) {
                 isEventListenersAdded = false;
                 fridgeList.innerHTML = "";
 
                 const existingProducts = Array.from(fridgeList.querySelectorAll('.product'));
-                const numExisting = existingProducts.length;
-                const numNew = endIndex - startIndex;
     
                 existingProducts.forEach(product => {
                     product.classList.add('exit');
@@ -19,11 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 if (window.matchMedia("(max-width: 767px)").matches) {
-                    // Display all items on small screens
                     startIndex = 0;
                     endIndex = data.length;
                 } else {
-                    // Ensure endIndex does not exceed the data length
                     endIndex = Math.min(endIndex, data.length);
                 }
 
