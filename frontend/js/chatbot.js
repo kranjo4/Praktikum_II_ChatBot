@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const questions = [
         {
             question: "Koliko ljudi običajno hraniš z zalogami iz hladilnika?",
@@ -48,15 +48,15 @@ document.addEventListener("DOMContentLoaded", function() {
         const chatMessages = document.querySelector('.chat-messages');
         const messageContainer = document.createElement('div');
         messageContainer.className = 'message-container';
-        
+
         const questionText = document.createElement('div');
         questionText.textContent = questions[currentQuestion].question;
         questionText.className = 'question-text';
         messageContainer.appendChild(questionText);
-        
+
         const answerContainer = document.createElement('div');
         answerContainer.className = 'answer-container';
-        
+
         questions[currentQuestion].answers.forEach(answer => {
             const button = document.createElement('button');
             button.textContent = answer;
@@ -64,26 +64,35 @@ document.addEventListener("DOMContentLoaded", function() {
             button.onclick = () => handleAnswer(answer, messageContainer);
             answerContainer.appendChild(button);
         });
-        
+
         messageContainer.appendChild(answerContainer);
         chatMessages.appendChild(messageContainer);
     }
-    
-    
-    
+
+
+
 
     function handleAnswer(answer) {
         const chatMessages = document.querySelector('.chat-messages');
-    
         const userAnswer = document.createElement('div');
         userAnswer.textContent = "Izbran odgovor: " + answer;
-        userAnswer.className = 'user-answer';  
+        userAnswer.className = 'user-answer';
         chatMessages.appendChild(userAnswer);
-    
+
         Array.from(document.querySelectorAll('.answer-button')).forEach(button => {
             button.remove();
         });
-    
+
+            const event = new CustomEvent('answerSelected', {
+                detail: {
+                    message: "Answer has been selected"
+                }
+            });
+            console.log('Triggering answerSelected event'); 
+            document.dispatchEvent(event);
+        
+        
+
         if (currentQuestion < questions.length - 1) {
             currentQuestion++;
             setTimeout(displayQuestion, 100);
@@ -94,22 +103,22 @@ document.addEventListener("DOMContentLoaded", function() {
             chatMessages.appendChild(thanksMessage);
         }
     }
-    
+
 
     displayQuestion();
 
-    document.getElementById('chatbotButton').addEventListener('click', function() {
+    document.getElementById('chatbotButton').addEventListener('click', function () {
         document.getElementById('chatbotContainer').style.visibility = 'visible';
     });
 
-    document.getElementById('chatbotButton1').addEventListener('click', function() {
+    document.getElementById('chatbotButton1').addEventListener('click', function () {
         document.getElementById('chatbotContainer').style.visibility = 'visible';
     });
 
-    document.getElementById('chatbotButtonClose').addEventListener('click', function() {
+    document.getElementById('chatbotButtonClose').addEventListener('click', function () {
         document.getElementById('chatbotContainer').style.visibility = 'hidden';
     });
-    
-    
-    
+
+
+
 });

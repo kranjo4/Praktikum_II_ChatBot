@@ -12,6 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let questionIndex = 0;
 
+      function showNavigationButtons() {
+        const prevButton = document.querySelector('.button-navigations .prev-button');
+        const nextButton = document.querySelector('.button-navigations .next-button');
+        console.log('Changing button displays');
+        prevButton.style.display = 'flex';
+        nextButton.style.display = 'flex';
+    }
+    
       const displayNextQuestion = () => {
         const chatMessages = document.querySelector(".chat-messages");
         const messageContainer = document.createElement("div");
@@ -43,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             button.addEventListener("click", () => {
               sendAnswer(pickedAwnser, messageContainer, () => {
                 questionIndex++;
+                showNavigationButtons();
                 displayNextQuestion();
                 displayFridges();
               });
@@ -192,10 +201,9 @@ function displayFridges() {
     data.push(foundItem)
   }
     
-
-
   const fridgeList = document.getElementById("fridge-list");
   let currentPosition = 0;
+
 
   function showFridges(startIndex, endIndex) {
     isEventListenersAdded = false;
@@ -204,22 +212,26 @@ function displayFridges() {
     const existingProducts = Array.from(
       fridgeList.querySelectorAll(".product")
     );
-    const numExisting = existingProducts.length;
-    const numNew = endIndex - startIndex;
 
     existingProducts.forEach((product) => {
       product.classList.add("exit");
       setTimeout(() => fridgeList.removeChild(product), 500);
     });
 
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 900) {
+        endIndex = startIndex + 2;  
+    } else {
+        endIndex = Math.min(endIndex, data.length);  
+    }
+
     if (window.matchMedia("(max-width: 767px)").matches) {
-      // Display all items on small screens
       startIndex = 0;
       endIndex = data.length;
     } else {
-      // Ensure endIndex does not exceed the data length
       endIndex = Math.min(endIndex, data.length);
     }
+
 
     for (let i = startIndex; i < endIndex; i++) {
       const fridge = data[i];
@@ -566,7 +578,6 @@ function displayFridges() {
     }
   });
 
-  // Re-render products on resize to switch between carousel and full list
   window.addEventListener("resize", () => {
     showFridges(currentPosition, currentPosition + 3);
   });
