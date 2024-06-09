@@ -307,14 +307,14 @@ a:hover {
     line-height: 1.4375rem;
     position: absolute;
     left: 50%;
-    transform: translate(-50%, -110%);
+    transform: translate(-50%, -83%);
+    z-index: 1;
     background-color: #fff;
     text-align: center;
     padding: .975rem .5rem;
     border-radius: 5px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
     display: none;
-    z-index: 1;
     width: 70%;
 }
 
@@ -331,7 +331,7 @@ a:hover {
 .stats_container {
     font-size: 16px;
     line-height: 1.428571429;
-    width: 40%;
+    width: 50%;
 }
 
 .stats_container h1 {
@@ -363,6 +363,23 @@ a:hover {
         flex-direction: column;
         overflow-x: hidden;
         max-width: 80vw;
+    }
+
+    .feature-description {
+        color: #9da6ab;
+        font-size: .875rem;
+        line-height: 1.4375rem;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -110%);
+        z-index: 1;
+        background-color: #fff;
+        text-align: center;
+        padding: .975rem .5rem;
+        border-radius: 5px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        display: none;
+        width: 70%;
     }
 
     .features-container {
