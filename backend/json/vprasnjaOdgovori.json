@@ -1,7 +1,10 @@
 [
-  {
+    {
     "question": "Za koliko ljudi je ponavadi hrane v hladilniku?",
-    "answers": [
+    "atributes": [
+      { "atribute": "Skupna_prostornina", "type": "number" }
+    ],
+    "awnsers": [
       { "text": "Samo eno", "value": [100] },
       { "text": "Dve osebi", "value": [200] },
       { "text": "Družino 3-4 oseb", "value": [300] },
@@ -9,119 +12,101 @@
     ]
   },
   {
+    "question": "Kakšen tip hladilnika preferiraš?",
+    "atributes": [{ "atribute": "Kategorija", "type": "compare" }],
+    "awnsers": [
+      {"text": "Ni mi pomembno", "value": ["notImportant"]},
+      {"text": "Štirivratni hladilnik", "value": ["Štirivratni hladilnik"]},
+      {"text": "Side by Side", "value": ["Side by Side"]},
+      {"text": "Hladilnik z zamrzovalnikom", "value":  ["Hladilnik z zamrzovalnikom"]}, 
+      {"text": "Hladilnik", "value": ["Hladilnik"]},
+      {"text": "Dvovratni hladilnik s predalom", "value":  ["Dvovratni hladilnik s predalom"]}, 
+      {"text": "Zamrzovalna omara", "value": ["Zamrzovalna omara"]},
+      {"text": "Zamrzovalna skrinja", "value": ["Zamrzovalna skrinja"]}
+  
+    ]
+  },
+  {
+    "question": "V katero skupino bi rekli da spadate?",
+    "atributes": [{ "atribute": "Trenutna_Cena", "type": "number" }],
+    "awnsers": [
+      { "text": "Študenetje", "value": [500] },
+      { "text": "Odrasli", "value": [2500] },
+      { "text": "Upokojenci", "value": [1000] }
+    ]
+  },
+  {
     "question": "Kolikokrat na teden običajno nakupuješ živila?",
-    "answers": [
-      { "text": "Enkrat na teden", "value": null },
-      { "text": "Večkrat na teden", "value": null },
-      { "text": "Na vsakih 14 dni", "value": null },
-      { "text": "Enkrat na mesec", "value": null }
+    "atributes": [
+      { "atribute": "CrispZone_predal_s_SmartHumidity", "type": "compare" },
+      { "atribute": "CrispZone_z_VitaLight_in_SmartHumidity", "type": "compare" },
+      { "atribute": "CrispZone_predal_za_zelenjavo", "type": "compare" }
+    ],
+    "awnsers": [
+      { "text": "Večkrat na teden", "value": ["notImportant", "notImportant", "notImportant"] },
+      { "text": "Enkrat na teden", "value": ["notImportant", "notImportant", "notImportant"] },
+      { "text": "Na vsakih 14 dni", "value": ["Da", "Da","Da"] },
+      { "text": "Enkrat na mesec", "value": ["Da","Da","Da"] }
     ]
   },
   {
     "question": "Kateri način shranjevanja živil imaš raje?",
-    "answers": [
-      { "text": "Večinoma sveža živila", "value": null },
-      { "text": "Predpakirana in pripravljena hrana", "value": null },
-      { "text": "Veliko zamrznjenih izdelkov", "value": null },
-      { "text": "Konzervirana hrana in dolgotrajni izdelki", "value": null }
+    "atributes": [
+      { "atribute": "CrispZone_predal_s_SmartHumidity", "type": "compare" },
+      { "atribute": "CrispZone_z_VitaLight_in_SmartHumidity", "type": "compare" },
+      { "atribute": "CrispZone_predal_za_zelenjavo", "type": "compare" },
+      { "atribute": "Prostornina_hladilnega_prostora", "type": "number" },
+      { "atribute": "Prostornina_zamrzovalnega_prostora", "type": "number" }
+    ],
+    "awnsers": [
+      { "text": "Večinoma sveža živila", "value": ["Da", "Da","Da", 0, 0] },
+      { "text": "Predpakirana in pripravljena hrana", "value":["notImportant", "notImportant", "notImportant", 300, 0] },
+      { "text": "Veliko zamrznjenih izdelkov", "value": ["notImportant", "notImportant", "notImportant", 0, 120] }
     ]
   },
   {
-    "question": "Kakšen pomen daješ energetski učinkovitosti?",
-    "answers": [
-      { "text": "Nizek", "value": null },
-      { "text": "Srednji", "value": null },
-      { "text": "Visok", "value": null },
-      { "text": "Zelo visok", "value": null }
-    ]
-  },
-  {
-    "question": "Koliko prostora v kuhinji imaš na voljo za hladilnik?",
-    "answers": [
-      { "text": "Zelo malo prostora", "value": null },
-      { "text": "Omejen prostor", "value": null },
-      { "text": "Prostorna kuhinja", "value": null },
-      { "text": "Prostor ni omejitev", "value": null }
-    ]
-  },
-  {
-    "question": "Kakšen je tvoj proračun za nakup hladilnika?",
-    "answers": [
-      { "text": "Do 200€", "value": null },
-      { "text": "200€ - 400€", "value": null },
-      { "text": "400€ - 600€", "value": null },
-      { "text": "Več kot 600€", "value": null }
-    ]
-  },
-  {
-    "question": "Kako pogosto kuhaš doma?",
-    "answers": [
-      { "text": "Skoraj nikoli", "value": null },
-      { "text": "Nekajkrat na teden", "value": null },
-      { "text": "Večino dni", "value": null },
-      { "text": "Vsak dan", "value": null }
-    ]
-  },
-  {
-    "question": "Kakšen tip hladilnika preferiraš?",
-    "answers": [
-      { "text": "Mini hladilnik", "value": null },
-      { "text": "Standardni hladilnik z zamrzovalnikom zgoraj", "value": null },
-      { "text": "Hladilnik z zamrzovalnikom spodaj", "value": null },
-      { "text": "Ameriški hladilnik z dvojnimi vrati", "value": null }
-    ]
-  },
-  {
-    "question": "Ali potrebuješ posebne funkcije, kot so ledomat, hladilnik za vino, ali predal za svežo zelenjavo?",
-    "answers": [
-      { "text": "Ne potrebujem posebnih funkcij", "value": null },
-      { "text": "Samo osnovne funkcije", "value": null },
-      { "text": "Ledomat in hladilnik za vino", "value": null },
-      { "text": "Napredne funkcije za shranjevanje sveže hrane", "value": null }
-    ]
-  },
-  {
-    "question": "Kako pomembna je tišina delovanja hladilnika?",
-    "answers": ["Ni pomembno", "Malo pomembno", "Pomembno", "Zelo pomembno"]
-  },
-  {
-    "question": "Vprasanje 4 (class)",
+    "question": "Ali vam je pomembno da je hladilnik energetsko učinkovit?",
     "atributes": [
       { "atribute": "Razred_energijske_učinkovitosti", "type": "class" }
     ],
     "awnsers": [
-      { "text": "Yes", "value": [true] },
-      { "text": "No", "value": [false] }
+      { "text": "Da", "value": [true] },
+      { "text": "Ne", "value": [false] }
     ]
   },
   {
-    "question": "Vprasanje 1 (budget)",
-    "atributes": [{ "atribute": "Trenutna_Cena", "type": "number" }],
+    "question": "Koliko prostora v kuhinji imaš na voljo za hladilnik?",
+    "atributes": [
+
+      { "atribute": "Širina_izdelka", "type": "number" },
+      { "atribute": "Višina_izdelka", "type": "number" },
+      { "atribute": "Globina_izdelka", "type": "number" }
+    ],
     "awnsers": [
-      { "text": "500", "value": [500] },
-      { "text": "700", "value": [700] },
-      { "text": "900", "value": [900] },
-      { "text": "1200", "value": [1200] }
+      { "text": "Zelo malo prostora", "value": [400, 800, 500] },
+      { "text": "Omejen prostor", "value": [600, 1200, 575] },
+      { "text": "Prostorna kuhinja", "value": [800, 1500, 650] },
+      { "text": "Prostor ni omejitev", "value": [1000, 1800, 750] }
     ]
   },
   {
-    "question": "Vprasanje 2 (visina)",
-    "atributes": [{ "atribute": "Višina_izdelka", "type": "number" }],
-    "awnsers": [
-      { "text": "1400", "value": [1400] },
-      { "text": "1600", "value": [1600] },
-      { "text": "1800", "value": [1800] },
-      { "text": "2000", "value": [2000] }
-    ]
-  },
-  {
-    "question": "Vprasanje 3 (no frost)",
+    "question": "Kaj vam je pomembno pri zmrzovalnem prostoru?",
     "atributes": [{ "atribute": "NoFrost", "type": "compare" }],
     "awnsers": [
-      { "text": "Nima", "value": [null] },
-      { "text": "NoFrost", "value": ["NoFrost"] },
-      { "text": "NoFrost Plus", "value": ["NoFrost Plus"] },
-      { "text": "NoFrost DualAdvance", "value": ["NoFrost DualAdvance"] }
+      { "text": "Ni mi pomembno", "value": ["notImportant" ] },
+      { "text": "Da se led ne nabira", "value": ["NoFrost"] },
+      { "text": "Da se led ne nabira in da deljuje varčno", "value": ["NoFrost Plus"] },
+      { "text": "Da se led ne nabira in da ima več prostora", "value": ["NoFrost DualAdvance"] }
+    ]
+  },
+  {
+    "question": "Ali vam je pomembna tišina delovanja hladilnika?",
+    "atributes": [
+      { "atribute": "Razred_hrupa", "type": "class" }
+    ],
+    "awnsers": [
+      { "text": "Yes", "value": [true] },
+      { "text": "No", "value": [false] }
     ]
   }
 ]

@@ -60,6 +60,9 @@ function calculateScore(scoreArr, answer) {
                         
                         break;
                     case "compare":
+                            if(answer.value[i] == "notImportant"){
+                                break;
+                            }
                             if(!(answer.value[i] == product[curAtribute])){
                                 newScore += 10
                             }                       
