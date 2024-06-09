@@ -1,16 +1,102 @@
 [
   {
-      "question": "Vprasanje 4 (class)",
-      "atributes": [{"atribute":"Razred_energijske_učinkovitosti", "type": "class"}], 
-      "awnsers": [
-        { "text": "Yes", "value": ["Yes"] },
-        { "text": "No", "value": ["No"] }
-        
-      ]
-    },
+    "question": "Za koliko ljudi je ponavadi hrane v hladilniku?",
+    "answers": [
+      { "text": "Samo eno", "value": [100] },
+      { "text": "Dve osebi", "value": [200] },
+      { "text": "Družino 3-4 oseb", "value": [300] },
+      { "text": "Družino 5 ali več oseb", "value":[500] }
+    ]
+  },
+  {
+    "question": "Kolikokrat na teden običajno nakupuješ živila?",
+    "answers": [
+      { "text": "Enkrat na teden", "value": null },
+      { "text": "Večkrat na teden", "value": null },
+      { "text": "Na vsakih 14 dni", "value": null },
+      { "text": "Enkrat na mesec", "value": null }
+    ]
+  },
+  {
+    "question": "Kateri način shranjevanja živil imaš raje?",
+    "answers": [
+      { "text": "Večinoma sveža živila", "value": null },
+      { "text": "Predpakirana in pripravljena hrana", "value": null },
+      { "text": "Veliko zamrznjenih izdelkov", "value": null },
+      { "text": "Konzervirana hrana in dolgotrajni izdelki", "value": null }
+    ]
+  },
+  {
+    "question": "Kakšen pomen daješ energetski učinkovitosti?",
+    "answers": [
+      { "text": "Nizek", "value": null },
+      { "text": "Srednji", "value": null },
+      { "text": "Visok", "value": null },
+      { "text": "Zelo visok", "value": null }
+    ]
+  },
+  {
+    "question": "Koliko prostora v kuhinji imaš na voljo za hladilnik?",
+    "answers": [
+      { "text": "Zelo malo prostora", "value": null },
+      { "text": "Omejen prostor", "value": null },
+      { "text": "Prostorna kuhinja", "value": null },
+      { "text": "Prostor ni omejitev", "value": null }
+    ]
+  },
+  {
+    "question": "Kakšen je tvoj proračun za nakup hladilnika?",
+    "answers": [
+      { "text": "Do 200€", "value": null },
+      { "text": "200€ - 400€", "value": null },
+      { "text": "400€ - 600€", "value": null },
+      { "text": "Več kot 600€", "value": null }
+    ]
+  },
+  {
+    "question": "Kako pogosto kuhaš doma?",
+    "answers": [
+      { "text": "Skoraj nikoli", "value": null },
+      { "text": "Nekajkrat na teden", "value": null },
+      { "text": "Večino dni", "value": null },
+      { "text": "Vsak dan", "value": null }
+    ]
+  },
+  {
+    "question": "Kakšen tip hladilnika preferiraš?",
+    "answers": [
+      { "text": "Mini hladilnik", "value": null },
+      { "text": "Standardni hladilnik z zamrzovalnikom zgoraj", "value": null },
+      { "text": "Hladilnik z zamrzovalnikom spodaj", "value": null },
+      { "text": "Ameriški hladilnik z dvojnimi vrati", "value": null }
+    ]
+  },
+  {
+    "question": "Ali potrebuješ posebne funkcije, kot so ledomat, hladilnik za vino, ali predal za svežo zelenjavo?",
+    "answers": [
+      { "text": "Ne potrebujem posebnih funkcij", "value": null },
+      { "text": "Samo osnovne funkcije", "value": null },
+      { "text": "Ledomat in hladilnik za vino", "value": null },
+      { "text": "Napredne funkcije za shranjevanje sveže hrane", "value": null }
+    ]
+  },
+  {
+    "question": "Kako pomembna je tišina delovanja hladilnika?",
+    "answers": ["Ni pomembno", "Malo pomembno", "Pomembno", "Zelo pomembno"]
+  },
+  {
+    "question": "Vprasanje 4 (class)",
+    "atributes": [
+      { "atribute": "Razred_energijske_učinkovitosti", "type": "class" }
+    ],
+    "awnsers": [
+      { "text": "Yes", "value": [true] },
+      { "text": "No", "value": [false] }
+    ]
+  },
   {
     "question": "Vprasanje 1 (budget)",
-    "atributes": [{"atribute":"Trenutna_Cena", "type": "number"}], 
+    "atributes": [{ "atribute": "Trenutna_Cena", "type": "number" }],
     "awnsers": [
       { "text": "500", "value": [500] },
       { "text": "700", "value": [700] },
@@ -20,7 +106,7 @@
   },
   {
     "question": "Vprasanje 2 (visina)",
-    "atributes": [{"atribute": "Višina_izdelka", "type": "number"}], 
+    "atributes": [{ "atribute": "Višina_izdelka", "type": "number" }],
     "awnsers": [
       { "text": "1400", "value": [1400] },
       { "text": "1600", "value": [1600] },
@@ -30,7 +116,7 @@
   },
   {
     "question": "Vprasanje 3 (no frost)",
-    "atributes": [{"atribute": "NoFrost", "type": "compare"}], 
+    "atributes": [{ "atribute": "NoFrost", "type": "compare" }],
     "awnsers": [
       { "text": "Nima", "value": [null] },
       { "text": "NoFrost", "value": ["NoFrost"] },

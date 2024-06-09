@@ -66,7 +66,7 @@ function calculateScore(scoreArr, answer) {
                         break;
                     
                     case "class":
-                        if(answer.value[i] == "Yes"){
+                        if(answer.value[i] == true){
 
                             let sortedClass = (getUniqueRazredHrupa(products, curAtribute)).sort()
                             
