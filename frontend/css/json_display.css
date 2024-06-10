@@ -307,7 +307,7 @@ a:hover {
     line-height: 1.4375rem;
     position: absolute;
     left: 50%;
-    transform: translate(-50%, -83%);
+    transform: translate(-50%, -60%);
     z-index: 1;
     background-color: #fff;
     text-align: center;
