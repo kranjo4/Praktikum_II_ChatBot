@@ -226,6 +226,35 @@
   justify-content: center;
 }
 
+
+#con-ai-diff{
+  width: 80vw;
+  height: auto;
+  padding: 1rem;
+  margin-top: 1rem;
+  display: none;
+}
+
+.ai-diff-text{
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.ai-diff-text h3 {
+  margin-top: 0;
+}
+.ai-diff-text h4{
+  margin: 0px;
+}
+#ai-diff-response{
+  margin-top: 1rem;
+
+}
+
+#btn-ai-diff{
+  display: none;
+}
+
 @media screen and (max-width: 767px) {
   
   .chatbot-container{
@@ -261,15 +290,7 @@
 
 
 
-.temp{
-  display: none;
-  width: 400px;
-  height: 200px;
-  position: relative;
-  top: 1;
-  left: 1;
 
-}
 
 
 

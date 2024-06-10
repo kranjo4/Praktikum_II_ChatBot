@@ -23,68 +23,9 @@
 <script src="https://cdn.jsdelivr.net/npm/flickity@2.3.1/dist/flickity.pkgd.min.js"></script>
 <!-- <script src="../js/vgradni_hladilniki.js"></script> -->
 <script src="../js/scoringLogic.js" defer></script>
+<script src="../js/diff.js" defer></script>
 <!-- <script src="../js/menu.js"></script> -->
 
-<!-- <div class="menu">
-    <div class="menu_container">
-        <div class="header_logo">
-            <div class="logo">
-                <a href="/">
-                    <img src="https://gor.hgecdn.net/medias/gorenje-logo-narrow.webp?context=bWFzdGVyfGltYWdlc3wxNDY5NHxpbWFnZS93ZWJwfGFHRTRMMmd6TVM4NU16STVNRFF6TXpjME1URXdMMmR2Y21WdWFtVXRiRzluYnkxdVlYSnliM2N1ZDJWaWNBfDkzODdlZTlhYWY5ZWZjY2QwMWEzNzVkMDVjNDZmOWU4NGFlZDM5ODhkYjQ5YzEzZGUwODU4ZTYxNTg1YTFiOTI"
-                        style="max-height: 35px; max-width: 190px;">
-                </a>
-            </div>
-            <div class="header_right-menu">
-                <ul class="right-menu">
-                    <li class="menu_item">
-                        <a href="#">SL</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="#">Priljubljeni</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="#">Prijava</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="#">Košarica</a>
-                    </li>
-                    <li class="menu_item">
-                        <a href="#">Iskanje</a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-        <div class="menu_header-main">
-            <ul class="bottom-menu">
-                <li class="menu_item">
-                    <button class="nav-button">Izdelki</button>
-                    <ul class="nav-items">
-                        <li class="nav-item"><a href="#">Hlajenje</a>
-                            <ul class="inner-nav-items">
-                                <li class="inner-nav-item"><a href="hladilniki_prostostojeci.html">Prostostoječi
-                                        hladilniki</a></li>
-                                <li class="inner-nav-item"><a href="hladilniki_vgradni.html">Vgradni hladilniki</a></li>
-                                <li class="inner-nav-item"><a href="zamrzovalniki.html">Zamrzovalne omare in skrinje</a>
-                                </li>
-                                <li class="inner-nav-item"><a href="#">Ledomati</a></li>
-                                <li class="inner-nav-item"><a href="#">Dodatki za hlajenje</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a href="#">Pranje in sušenje perila</a></li>
-                        <li class="nav-item"><a href="#">Pomivanje posode</a></li>
-                        <li class="nav-item"><a href="#">Kuhanje in pečenje</a></li>
-                        <li class="nav-item"><a href="#">Priprava hrane</a></li>
-                        <li class="nav-item"><a href="#">Dom in osebna nega</a></li>
-                        <li class="nav-item"><a href="#">Ogrevanje in hlajenje doma</a></li>
-                        <li class="nav-item"><a href="#">Kuhinje</a></li>
-                        <li class="nav-item"><a href="chatbot.html">AI asistent</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div> -->
 
 </head>
 
@@ -108,11 +49,28 @@
                     <button id="chatbotButton1" class="btn">
                         Začni
                     </button>
+                    <button id="btn-ai-diff" onclick="loadResponse()" class="btn">
+                        Razlike med top 3
+                    </button>
                     <!-- <a href="" class="btn1">
                         Preberi si o Gorenjkotu
                     </a> -->
 
                 </div>
+            </div>
+        </div>
+        <div id="con-ai-diff"> 
+            <div class="ai-diff-text">
+                <h3>Razlike med tremi najprimernješimi hladliniki za vas:</h3>
+                <h4>1: </h4><!-- TODO tu dodaj serijsko stevilko ali pa ime haldilnika -->
+                <h4>2: </h4>
+                <h4>3: </h4>
+
+                <div id="ai-diff-response">
+
+                   <!--TODO tu noter pride response  -->
+                </div>
+                
             </div>
         </div>
 
@@ -160,7 +118,6 @@
 
     </div>
 
-    <div class="temp">asdadasasdasd</div>
 </body>
 
 </html>
