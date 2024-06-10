@@ -1,249 +1,353 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://localhost:3000/questions")
-    .then((response) => response.json())
-    .then((data) => {
-      const questionsRes = data.questionsAndAnswers;
-      window.sessionStorage.setItem(
-        "score",
-        JSON.stringify(data.itemsCurrentScore)
-      );
-      window.sessionStorage.setItem("questions", JSON.stringify(questionsRes));
-      window.sessionStorage.setItem("items", JSON.stringify(data.allItems));
+    fetch("http://localhost:3000/questions")
+        .then((response) => response.json())
+        .then((data) => {
+            const questionsRes = data.questionsAndAnswers;
+            window.sessionStorage.setItem(
+                "score",
+                JSON.stringify(data.itemsCurrentScore)
+            );
+            window.sessionStorage.setItem("questions", JSON.stringify(questionsRes));
+            window.sessionStorage.setItem("items", JSON.stringify(data.allItems));
 
-      let questionIndex = 0;
+            let questionIndex = 0;
 
-      function showNavigationButtons() {
-        const prevButton = document.querySelector('.button-navigations .prev-button');
-        const nextButton = document.querySelector('.button-navigations .next-button');
-        console.log('Changing button displays');
-        prevButton.style.display = 'flex';
-        nextButton.style.display = 'flex';
-    }
-    
-      const displayNextQuestion = () => {
-        const chatMessages = document.querySelector(".chat-messages");
-        const messageContainer = document.createElement("div");
-        messageContainer.className = "message-container";
+            function showNavigationButtons() {
+                const prevButton = document.querySelector('.button-navigations .prev-button');
+                const nextButton = document.querySelector('.button-navigations .next-button');
+                console.log('Changing button displays');
+                prevButton.style.display = 'flex';
+                nextButton.style.display = 'flex';
+            }
 
-        if (questionIndex < questionsRes.length) {
-          const question = questionsRes[questionIndex];
-          const atributes = question.atributes;
+            const displayNextQuestion = () => {
+                const chatMessages = document.querySelector(".chat-messages");
+                const messageContainer = document.createElement("div");
+                messageContainer.className = "message-container";
 
-          const questionText = document.createElement("div");
-          questionText.textContent = question.question;
-          questionText.className = "question-text";
-          messageContainer.appendChild(questionText);
+                if (questionIndex < questionsRes.length) {
+                    const question = questionsRes[questionIndex];
+                    const atributes = question.atributes;
 
-          const answerContainer = document.createElement("div");
-          answerContainer.className = "answer-container";
+                    const questionText = document.createElement("div");
+                    questionText.textContent = question.question;
+                    questionText.className = "question-text";
+                    messageContainer.appendChild(questionText);
 
-          question.awnsers.forEach((answer) => {
-            const button = document.createElement("button");
-            button.textContent = answer.text;
-            button.className = "answer-button";
-            answerContainer.appendChild(button);
-            let pickedAwnser = {
-              atributes,
-              value: answer.value,
-              text: answer.text,
+                    const answerContainer = document.createElement("div");
+                    answerContainer.className = "answer-container";
+
+                    question.awnsers.forEach((answer) => {
+                        const button = document.createElement("button");
+                        button.textContent = answer.text;
+                        button.className = "answer-button";
+                        answerContainer.appendChild(button);
+                        let pickedAwnser = {
+                            atributes,
+                            value: answer.value,
+                            text: answer.text,
+                        };
+
+                        button.addEventListener("click", () => {
+                            sendAnswer(pickedAwnser, messageContainer, () => {
+                                questionIndex++;
+                                showNavigationButtons();
+                                displayNextQuestion();
+                                displayFridges();
+                            });
+                        });
+
+                        messageContainer.appendChild(answerContainer);
+                    });
+                    chatMessages.appendChild(messageContainer);
+                } else {
+                    const thanksMessage = document.createElement("div");
+                    thanksMessage.textContent = "Hvala za vaše odgovore!";
+                    thanksMessage.className = "thanks-message";
+                    chatMessages.appendChild(thanksMessage);
+                    sendGenerateRequest();
+                }
             };
 
-            button.addEventListener("click", () => {
-              sendAnswer(pickedAwnser, messageContainer, () => {
-                questionIndex++;
-                showNavigationButtons();
-                displayNextQuestion();
-                displayFridges();
-              });
-            });
-
-            messageContainer.appendChild(answerContainer);
-          });
-          chatMessages.appendChild(messageContainer);
-        } else {
-          const thanksMessage = document.createElement("div");
-          thanksMessage.textContent = "Hvala za vaše odgovore!";
-          thanksMessage.className = "thanks-message";
-          chatMessages.appendChild(thanksMessage);
-        }
-      };
-
-      displayNextQuestion();
-    })
-    .catch((error) => console.error("Error fetching questions:", error));
+            displayNextQuestion();
+        })
+        .catch((error) => console.error("Error fetching questions:", error));
 });
 
-function sendAnswer(answer, messageContainer, callback) {
-  const currentScoreArr = JSON.parse(window.sessionStorage.getItem("score"));
-  const userAnswer = document.createElement("div");
-  userAnswer.textContent = "Izbran odgovor: " + answer.text;
-  userAnswer.className = "user-answer";
-  messageContainer.appendChild(userAnswer);
+const sendGenerateRequest = () => {
+    console.log("USLO")
+    const score = JSON.parse(window.sessionStorage.getItem("score"));
+    const sortedScores = score.sort((a, b) => a.score - b.score);
+    const items = JSON.parse(window.sessionStorage.getItem("items"));
+    console.log("Sortirani score:", JSON.stringify(sortedScores, null, 2));
+    const topThreeScores = sortedScores.slice(0, 3)
 
-  Array.from(document.querySelectorAll(".answer-button")).forEach((button) => {
-    button.remove();
-  });
+    const topThreeProducts = topThreeScores.map(scoreItem => {
+        const product = items.find(item => item.Serijska_stevilka === scoreItem.Serijska_stevilka);
+        if (product){
+            const {
+                Ime_hladilnika,
+                Serijska_stevilka,
+                Kategorija,
+                Dozirnik_vode,
+                Funkcija_hitrega_zamrzovanja_FastFreeze,
+                Gibanje_zraka,
+                Nastavljivost_temperature_zamrzovalnega_prostora,
+                Način_odtaljevanja_hladilnega_prostora,
+                Način_odtaljevanja_zamrzovalnega_prostora,
+                Neto_teža,
+                NoFrost,
+                Ocenjena_letna_poraba_energije,
+                Poličke_v_vratih_zamrzovalnika,
+                Posode_v_vratih_hladilnika,
+                Posodica_za_jajca,
+                Posodica_za_led,
+                Prostornina_hladilnega_prostora,
+                Prostornina_zamrzovalnega_prostora,
+                Razred_energijske_učinkovitosti,
+                Razred_hrupa,
+                Redna_Cena,
+                Trenutna_Cena,
+                Skupna_prostornina,
+                Višina_izdelka,
+                Širina_izdelka,
+                Število_neodvisnih_hladilnih_sistemov,
+                Število_prestavljivih_polic_v_hladilnem_delu,
+                Število_steklenih_polic_v_hladilnem_delu
+        } = product
+            return {
+                Ime_hladilnika,
+                Serijska_stevilka,
+                Kategorija,
+                Dozirnik_vode,
+                Funkcija_hitrega_zamrzovanja_FastFreeze,
+                Gibanje_zraka,
+                Nastavljivost_temperature_zamrzovalnega_prostora,
+                Način_odtaljevanja_hladilnega_prostora,
+                Način_odtaljevanja_zamrzovalnega_prostora,
+                Neto_teža,
+                NoFrost,
+                Ocenjena_letna_poraba_energije,
+                Poličke_v_vratih_zamrzovalnika,
+                Posode_v_vratih_hladilnika,
+                Posodica_za_jajca,
+                Posodica_za_led,
+                Prostornina_hladilnega_prostora,
+                Prostornina_zamrzovalnega_prostora,
+                Razred_energijske_učinkovitosti,
+                Razred_hrupa,
+                Redna_Cena,
+                Trenutna_Cena,
+                Skupna_prostornina,
+                Višina_izdelka,
+                Širina_izdelka,
+                Število_neodvisnih_hladilnih_sistemov,
+                Število_prestavljivih_polic_v_hladilnem_delu,
+                Število_steklenih_polic_v_hladilnem_delu
+            };
+        }
+        return null
+    }).filter(product => product !== null)
 
-  const data = {
-    answer,
-    currentScoreArr,
-  };
+    let productsForSend = JSON.stringify(topThreeProducts)
 
-  fetch("http://localhost:3000/send-answer", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((result) => {
-      console.log(result);
-      window.sessionStorage.setItem(
-        "score",
-        JSON.stringify(result.newScoreArr)
-      );
-      callback();
+    const payload = {
+        products: productsForSend
+    }
+
+    fetch("http://localhost:3000/model/generate", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
     })
-    .catch((error) => {
-      console.log("Error:", error);
-    });
+        .then((response) => response.json())
+        .then((chatResult) => {
+        console.log("Generated answer:", chatResult);
+        const chatMessages = document.querySelector(".chat-messages");
+        const chatAnswer = document.createElement("div");
+        chatAnswer.textContent = chatResult;
+        chatMessages.appendChild(chatAnswer);
+    })
+        .catch((error) => {
+            console.log("Error", error);
+        })
+
+
 }
 
-function displayFridges() {
-  const sortedScore = sortByAbsoluteScore(
-    JSON.parse(window.sessionStorage.getItem("score"))
-  );
-  const container = document.getElementById("topItems");
-  // for (let i = 0; i < 3; i++) {
+    function sendAnswer(answer, messageContainer, callback) {
+        const currentScoreArr = JSON.parse(window.sessionStorage.getItem("score"));
+        const userAnswer = document.createElement("div");
+        userAnswer.textContent = "Izbran odgovor: " + answer.text;
+        userAnswer.className = "user-answer";
+        messageContainer.appendChild(userAnswer);
 
-  //TODO da bo odvisn od score
+        Array.from(document.querySelectorAll(".answer-button")).forEach((button) => {
+            button.remove();
+        });
 
-  // const fridgeList = document.getElementById("fridge-list");
-  // const data = JSON.parse(window.sessionStorage.getItem("items"));
-  // let currentPosition = 0;
+        const data = {
+            answer,
+            currentScoreArr,
+        };
 
-  // function showFridges(startIndex, endIndex) {
-  //   fridgeList.innerHTML = "";
-
-  //   for (let i = startIndex; i < Math.min(endIndex, data.length); i++) {
-  //     const fridge =  data.find(item => item.Serijska_stevilka === sortedScore[i].Serijska_stevilka);
-  //     const productElement = document.createElement("div");
-  //     productElement.className = "product";
-  //     productElement.innerHTML = `
-
-  //         <div class=up_row>
-
-  //                 <div class=img_container>
-  //                     <a href="${fridge.Več_informacij}"><img src="${fridge.Slika}" alt="Slika hladilnika ${fridge.Ime_hladilnika}"></a>
-  //                 </div>
-
-  //                 <div class=stats_container>
-  //                     <h2 class="fridge-name">${fridge.Ime_hladilnika} - ${fridge.Serijska_stevilka}</h2>
-  //                     <div class="fridge-specs">
-  //                         Razred energijske učinkovitosti: ${fridge.Razred_energijske_učinkovitosti},
-  //                         Način postavitve: ${fridge.Način_postavitve},
-  //                         Širina izdelka: ${fridge.Širina_izdelka},
-  //                         Višina izdelka: ${fridge.Višina_izdelka}
-  //                     </div>
-  //                 </div>
-
-  //             </div>
-
-  //             <div class=efficency-class>
-  //                 <p>${fridge.Razred_energijske_učinkovitosti}</p>
-  //             </div>
-
-  //             <div class=bottom_row>
-  //                 <div class=checkbox>
-
-  //                 </div>
-  //                 <div class=stats_container>
-  //                     <div class="price-old">€ ${fridge.Redna_Cena}</div>
-  //                     <div class="price-new">€ ${fridge.Trenutna_Cena}</div>
-  //                 </div>
-  //             </div>
-
-  //         </div>
-
-  //           `;
-  //     fridgeList.appendChild(productElement);
-  //   }
-
-  // }
-
-  // showFridges(currentPosition, currentPosition + 3);
-
-  // const prevButton = document.querySelector(".prev-button");
-  // const nextButton = document.querySelector(".next-button");
-
-  // prevButton.addEventListener("click", function () {
-  //   if (currentPosition > 0) {
-  //     currentPosition -= 1;
-  //     showFridges(currentPosition, currentPosition + 3);
-  //   }
-  // });
-
-  // nextButton.addEventListener("click", function () {
-  //   if (currentPosition + 3 < data.length) {
-  //     currentPosition += 1;
-  //     showFridges(currentPosition, currentPosition + 3);
-  //   }
-  // });
-  // }
-
-  let items = JSON.parse(window.sessionStorage.getItem("items"));
-  let data = []
-  for (let i = 0; i < items.length; i++) {
-   
-    
-    let foundItem = items.find(item => item.Serijska_stevilka === sortedScore[i].Serijska_stevilka);
-    data.push(foundItem)
-  }
-    
-  const fridgeList = document.getElementById("fridge-list");
-  let currentPosition = 0;
-
-
-  function showFridges(startIndex, endIndex) {
-    isEventListenersAdded = false;
-    fridgeList.innerHTML = "";
-
-    const existingProducts = Array.from(
-      fridgeList.querySelectorAll(".product")
-    );
-
-    existingProducts.forEach((product) => {
-      product.classList.add("exit");
-      setTimeout(() => fridgeList.removeChild(product), 500);
-    });
-
-    const screenWidth = window.innerWidth;
-    if (screenWidth <= 900) {
-        endIndex = startIndex + 2;  
-    } else {
-        endIndex = Math.min(endIndex, data.length);  
+        fetch("http://localhost:3000/send-answer", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                console.log(result);
+                window.sessionStorage.setItem(
+                    "score",
+                    JSON.stringify(result.newScoreArr)
+                );
+                callback();
+            })
+            .catch((error) => {
+                console.log("Error:", error);
+            });
     }
 
-    if (window.matchMedia("(max-width: 767px)").matches) {
-      startIndex = 0;
-      endIndex = data.length;
-    } else {
-      endIndex = Math.min(endIndex, data.length);
-    }
+    function displayFridges() {
+        const sortedScore = sortByAbsoluteScore(
+            JSON.parse(window.sessionStorage.getItem("score"))
+        );
+        const container = document.getElementById("topItems");
+        // for (let i = 0; i < 3; i++) {
+
+        //TODO da bo odvisn od score
+
+        // const fridgeList = document.getElementById("fridge-list");
+        // const data = JSON.parse(window.sessionStorage.getItem("items"));
+        // let currentPosition = 0;
+
+        // function showFridges(startIndex, endIndex) {
+        //   fridgeList.innerHTML = "";
+
+        //   for (let i = startIndex; i < Math.min(endIndex, data.length); i++) {
+        //     const fridge =  data.find(item => item.Serijska_stevilka === sortedScore[i].Serijska_stevilka);
+        //     const productElement = document.createElement("div");
+        //     productElement.className = "product";
+        //     productElement.innerHTML = `
+
+        //         <div class=up_row>
+
+        //                 <div class=img_container>
+        //                     <a href="${fridge.Več_informacij}"><img src="${fridge.Slika}" alt="Slika hladilnika ${fridge.Ime_hladilnika}"></a>
+        //                 </div>
+
+        //                 <div class=stats_container>
+        //                     <h2 class="fridge-name">${fridge.Ime_hladilnika} - ${fridge.Serijska_stevilka}</h2>
+        //                     <div class="fridge-specs">
+        //                         Razred energijske učinkovitosti: ${fridge.Razred_energijske_učinkovitosti},
+        //                         Način postavitve: ${fridge.Način_postavitve},
+        //                         Širina izdelka: ${fridge.Širina_izdelka},
+        //                         Višina izdelka: ${fridge.Višina_izdelka}
+        //                     </div>
+        //                 </div>
+
+        //             </div>
+
+        //             <div class=efficency-class>
+        //                 <p>${fridge.Razred_energijske_učinkovitosti}</p>
+        //             </div>
+
+        //             <div class=bottom_row>
+        //                 <div class=checkbox>
+
+        //                 </div>
+        //                 <div class=stats_container>
+        //                     <div class="price-old">€ ${fridge.Redna_Cena}</div>
+        //                     <div class="price-new">€ ${fridge.Trenutna_Cena}</div>
+        //                 </div>
+        //             </div>
+
+        //         </div>
+
+        //           `;
+        //     fridgeList.appendChild(productElement);
+        //   }
+
+        // }
+
+        // showFridges(currentPosition, currentPosition + 3);
+
+        // const prevButton = document.querySelector(".prev-button");
+        // const nextButton = document.querySelector(".next-button");
+
+        // prevButton.addEventListener("click", function () {
+        //   if (currentPosition > 0) {
+        //     currentPosition -= 1;
+        //     showFridges(currentPosition, currentPosition + 3);
+        //   }
+        // });
+
+        // nextButton.addEventListener("click", function () {
+        //   if (currentPosition + 3 < data.length) {
+        //     currentPosition += 1;
+        //     showFridges(currentPosition, currentPosition + 3);
+        //   }
+        // });
+        // }
+
+        let items = JSON.parse(window.sessionStorage.getItem("items"));
+        let data = []
+        for (let i = 0; i < items.length; i++) {
 
 
-    for (let i = startIndex; i < endIndex; i++) {
-      const fridge = data[i];
-      const productElement = document.createElement("div");
-      productElement.className = "product";
-      productElement.className = "product enter";
+            let foundItem = items.find(item => item.Serijska_stevilka === sortedScore[i].Serijska_stevilka);
+            data.push(foundItem)
+        }
 
-      let featureIconHTML = "";
-      let fridgeName = "";
+        const fridgeList = document.getElementById("fridge-list");
+        let currentPosition = 0;
 
-      if ("Smart_SuperCool" in fridge && fridge.Smart_SuperCool === "Da") {
-        featureIconHTML += `<div class="feature-icon">
+
+        function showFridges(startIndex, endIndex) {
+            isEventListenersAdded = false;
+            fridgeList.innerHTML = "";
+
+            const existingProducts = Array.from(
+                fridgeList.querySelectorAll(".product")
+            );
+
+            existingProducts.forEach((product) => {
+                product.classList.add("exit");
+                setTimeout(() => fridgeList.removeChild(product), 500);
+            });
+
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 900) {
+                endIndex = startIndex + 2;
+            } else {
+                endIndex = Math.min(endIndex, data.length);
+            }
+
+            if (window.matchMedia("(max-width: 767px)").matches) {
+                startIndex = 0;
+                endIndex = data.length;
+            } else {
+                endIndex = Math.min(endIndex, data.length);
+            }
+
+
+            for (let i = startIndex; i < endIndex; i++) {
+                const fridge = data[i];
+                const productElement = document.createElement("div");
+                productElement.className = "product";
+                productElement.className = "product enter";
+
+                let featureIconHTML = "";
+                let fridgeName = "";
+
+                if ("Smart_SuperCool" in fridge && fridge.Smart_SuperCool === "Da") {
+                    featureIconHTML += `<div class="feature-icon">
                                                 <div class="icon-img">
                                                     <img src="https://static14.gorenje.com/mabagor/imagelib/icon-spec/0/2/026fe26fb4db785f98d828508c353bf7_123258_fp.jpg" alt="Smart_SuperCool">
                                                 </div>
@@ -252,10 +356,10 @@ function displayFridges() {
                                                 </div>
                                                 <span class="feature-description">Ko v hladilnik zložimo večjo količino živil, pametni senzorji prepoznajo nenaden dvig temperature in aktivirajo funkcijo Smart SuperCool. Hladilni sistem nato deluje na najvišji stopnji, vse dokler ne doseže prednastavljene temperature, ki zagotavlja optimalne pogoje za shranjevanje hrano.</span>
                                             </div>`;
-      }
+                }
 
-      if ("NoFrost" in fridge) {
-        featureIconHTML += `<div class="feature-icon">
+                if ("NoFrost" in fridge) {
+                    featureIconHTML += `<div class="feature-icon">
                                                 <div class="icon-img">
                                                     <img src="https://static14.gorenje.com/mabagor/imagelib/icon-spec/d/5/d5c8eb0a1d64c315f84f80f02b2120b4_102649_fp.jpg" alt="NoFrostDualAdvance">
                                                 </div>
@@ -264,13 +368,13 @@ function displayFridges() {
                                                 </div>
                                                 <span class="feature-description">Intenzivno kroženje hladnega zraka v prostoru zamrzovalnika znižuje raven vlažnosti in preprečuje nabiranje zmrzali na živilih ter ledu na stenah zamrzovalnika. V prostoru hladilnika zagotavlja optimalne pogoje za shranjevanje živil. Zagotovljeno je optimalno upravljanje hlajenja in zamrzovanja, ker sta to dva samostojna postopka v dveh ločenih delih aparata.</span>
                                             </div>`;
-      }
+                }
 
-      if (
-        "IonAir_s_hlajenjem_DynamiCooling" in fridge &&
-        fridge.IonAir_s_hlajenjem_DynamiCooling === "Da"
-      ) {
-        featureIconHTML += `<div class="feature-icon">
+                if (
+                    "IonAir_s_hlajenjem_DynamiCooling" in fridge &&
+                    fridge.IonAir_s_hlajenjem_DynamiCooling === "Da"
+                ) {
+                    featureIconHTML += `<div class="feature-icon">
                                                 <div class="icon-img">
                                                     <img src="https://static14.gorenje.com/mabagor/imagelib/icon-spec/4/5/455f0316c2ed0c5cf38a622b89bc9dea_104156_fp.jpg" alt="IonAir_s_hlajenjem_DynamiCooling">
                                                 </div>
@@ -279,10 +383,10 @@ function displayFridges() {
                                                 </div>
                                                 <span class="feature-description">Napreden ventilatorski sistem z dinamičnim hlajenjem skrbi zaenakomerno razporejenost ioniziranega zraka in temperature pocelotnem hladilniku. Z dodatnimi negativnimi ioni obogaten zrakposnema naravno mikroklimo, zato sveža živila ostanejo svežadlje časa. Prav tako je hrano mogoče postaviti na katerokolipolico v hladilniku, saj ni temperaturnih razlik.</span>
                                             </div>`;
-      }
+                }
 
-      if ("Nosilec_za_steklenice" in fridge) {
-        featureIconHTML += `<div class="feature-icon">
+                if ("Nosilec_za_steklenice" in fridge) {
+                    featureIconHTML += `<div class="feature-icon">
                                                 <div class="icon-img">
                                                     <img src="https://static14.gorenje.com/mabagor/imagelib/icon-spec/2/0/2083d52cad8ce8792e203b8947f8def9_102634_fp.jpg" alt="Nosilec za steklenice">
                                                 </div>
@@ -291,38 +395,38 @@ function displayFridges() {
                                                 </div>
                                                 <span class="feature-description">V hladilnikih Gorenje steklenice ne odvzemajo prostora drugim živilom na steklenih policah, saj je zanje predviden prav poseben nosilec. Z njim je izraba prostora za shranjevanje optimalna.</span>
                                             </div>`;
-      }
+                }
 
-      if ("Razred_energijske_učinkovitosti" in fridge) {
-        let iconUrl = "";
-        let efficencyClass = "";
-        switch (fridge.Razred_energijske_učinkovitosti) {
-          case "C":
-            iconUrl =
-              "https://static14.gorenje.com/mabagor/imagelib/icon-spec/3/7/375e4a558e6b724f4b369031ab89628c_177014_2.jpg";
-            efficencyClass = "C energijski razred";
+                if ("Razred_energijske_učinkovitosti" in fridge) {
+                    let iconUrl = "";
+                    let efficencyClass = "";
+                    switch (fridge.Razred_energijske_učinkovitosti) {
+                        case "C":
+                            iconUrl =
+                                "https://static14.gorenje.com/mabagor/imagelib/icon-spec/3/7/375e4a558e6b724f4b369031ab89628c_177014_2.jpg";
+                            efficencyClass = "C energijski razred";
 
-            break;
-          case "D":
-            iconUrl =
-              "https://static14.gorenje.com/mabagor/imagelib/icon-spec/b/c/bc325c232c3efbc7fe5e590c0ed55427_176627_2.jpg";
-            efficencyClass = "D energijski razred";
+                            break;
+                        case "D":
+                            iconUrl =
+                                "https://static14.gorenje.com/mabagor/imagelib/icon-spec/b/c/bc325c232c3efbc7fe5e590c0ed55427_176627_2.jpg";
+                            efficencyClass = "D energijski razred";
 
-            break;
-          case "E":
-            iconUrl =
-              "https://static14.gorenje.com/mabagor/imagelib/icon-spec/b/a/bab12d346d02e3548fc4edf51321ff9d_176625_2.jpg";
-            efficencyClass = "E energijski razred";
+                            break;
+                        case "E":
+                            iconUrl =
+                                "https://static14.gorenje.com/mabagor/imagelib/icon-spec/b/a/bab12d346d02e3548fc4edf51321ff9d_176625_2.jpg";
+                            efficencyClass = "E energijski razred";
 
-            break;
-          case "F":
-            iconUrl =
-              "https://static14.gorenje.com/mabagor/imagelib/icon-spec/1/a/1a65ea250fd50023f9b963893f9ac894_176626_2.jpg";
-            efficencyClass = "F energijski razred";
-            break;
-        }
-        if (iconUrl !== "") {
-          featureIconHTML += `<div class="feature-icon">
+                            break;
+                        case "F":
+                            iconUrl =
+                                "https://static14.gorenje.com/mabagor/imagelib/icon-spec/1/a/1a65ea250fd50023f9b963893f9ac894_176626_2.jpg";
+                            efficencyClass = "F energijski razred";
+                            break;
+                    }
+                    if (iconUrl !== "") {
+                        featureIconHTML += `<div class="feature-icon">
                                                     <div class="icon-img">
                                                         <img src="${iconUrl}" alt="Energijski razred ${fridge.Razred_energijske_učinkovitosti}">
                                                     </div>
@@ -331,14 +435,14 @@ function displayFridges() {
                                                     </div>
                                                     <span class="feature-description">Gospodinjski aparati, stari 15 let ali več, porabijo do trikrat več energije kot novi. Novi modeli Gorenja imajo odlično toplotno izolacijo, se ponašajo z izboljšanim tesnjenjem vrat, vrhunskimi komponentami hladilnega sistema in elektronsko regulacijo, ki porabo energije zmanjša na minimum.</span>
                                                 </div>`;
-        }
-      }
+                    }
+                }
 
-      if (
-        "Funkcija_hitrega_zamrzovanja_FastFreeze" in fridge &&
-        fridge.Funkcija_hitrega_zamrzovanja_FastFreeze === "Da"
-      ) {
-        featureIconHTML += `<div class="feature-icon">
+                if (
+                    "Funkcija_hitrega_zamrzovanja_FastFreeze" in fridge &&
+                    fridge.Funkcija_hitrega_zamrzovanja_FastFreeze === "Da"
+                ) {
+                    featureIconHTML += `<div class="feature-icon">
                                                 <div class="icon-img">
                                                     <img src="https://static14.gorenje.com/mabagor/imagelib/icon-spec/0/c/0caf0dcf50512a1959b6a9852b96c9b0_102503_fp.jpg" alt="Funkcija_hitrega_zamrzovanja_FastFreeze">
                                                 </div>
@@ -347,30 +451,30 @@ function displayFridges() {
                                                 </div>
                                                 <span class="feature-description">Funkcija FastFreeze je primerna za hitro in učinkovito zamrzovanje hrane ob večjih nakupih. Deluje intenzivno na izjemno nizki temperaturi –24 °C. Ob vklopu deluje 50 ur inohranja konstantno temperaturo, nato se samodejno naravna na normalno temperaturo zamrzovalnika –18 °C .</span>
                                             </div>`;
-      }
+                }
 
-      if ("Tečaj_vrat" in fridge) {
-        let iconUrl = "";
-        let doorType = "";
-        let doorTypeDescription = "";
-        switch (fridge.Tečaj_vrat) {
-          case "Škarjasti tečaj":
-            iconUrl =
-              "https://static14.gorenje.com/mabagor/imagelib/icon-spec/8/c/8c6a10ff89895459266e0fe38c6f06af_102618_fp.jpg";
-            doorType = "Škarjasti tečaj";
-            doorTypeDescription =
-              "Poseben škarjasti tečaj zaradi svoje vzdržljivosti dovoljuje visoko stopnjo obremenitve vrat aparata in omogoča udobno odpiranje do kota 115°. Na ta način je zagotovljena večja preglednost nad živili, lažje pa je tudi poseganje v notranjost, ker vrata vselej obstanejo na mestu. V primeru, da jih ne zaprete do konca oziroma ostanejo odprta do kota 20°, ta tečaj poskrbi, da se zaprejo samodejno. Na ta način ohranjate primerno temperaturo in učinkoviteje varčujete z električno energijo.";
-            break;
-          case "Drsni tečaj":
-            iconUrl =
-              "https://static14.gorenje.com/mabagor/imagelib/icon-spec/8/c/8c6a10ff89895459266e0fe38c6f06af_102618_fp.jpg";
-            doorType = "Drsni tečaj";
-            doorTypeDescription =
-              "Trpežni tečaj omogoča shranjevanje težjih predmetov v predalih na vratih ter odpiranje vrat pod kotom 115°. To omogoča boljši pogled na notranjost in olajša nalaganje hladilnika ter jemanje hrane iz njega, saj se vrata ne bodo samodejno zapirala. Če so vrata odprta, jih bo tečaj v celoti zaprl, da bo prihranil energijo.";
-            break;
-        }
-        if (iconUrl !== "") {
-          featureIconHTML += `<div class="feature-icon">
+                if ("Tečaj_vrat" in fridge) {
+                    let iconUrl = "";
+                    let doorType = "";
+                    let doorTypeDescription = "";
+                    switch (fridge.Tečaj_vrat) {
+                        case "Škarjasti tečaj":
+                            iconUrl =
+                                "https://static14.gorenje.com/mabagor/imagelib/icon-spec/8/c/8c6a10ff89895459266e0fe38c6f06af_102618_fp.jpg";
+                            doorType = "Škarjasti tečaj";
+                            doorTypeDescription =
+                                "Poseben škarjasti tečaj zaradi svoje vzdržljivosti dovoljuje visoko stopnjo obremenitve vrat aparata in omogoča udobno odpiranje do kota 115°. Na ta način je zagotovljena večja preglednost nad živili, lažje pa je tudi poseganje v notranjost, ker vrata vselej obstanejo na mestu. V primeru, da jih ne zaprete do konca oziroma ostanejo odprta do kota 20°, ta tečaj poskrbi, da se zaprejo samodejno. Na ta način ohranjate primerno temperaturo in učinkoviteje varčujete z električno energijo.";
+                            break;
+                        case "Drsni tečaj":
+                            iconUrl =
+                                "https://static14.gorenje.com/mabagor/imagelib/icon-spec/8/c/8c6a10ff89895459266e0fe38c6f06af_102618_fp.jpg";
+                            doorType = "Drsni tečaj";
+                            doorTypeDescription =
+                                "Trpežni tečaj omogoča shranjevanje težjih predmetov v predalih na vratih ter odpiranje vrat pod kotom 115°. To omogoča boljši pogled na notranjost in olajša nalaganje hladilnika ter jemanje hrane iz njega, saj se vrata ne bodo samodejno zapirala. Če so vrata odprta, jih bo tečaj v celoti zaprl, da bo prihranil energijo.";
+                            break;
+                    }
+                    if (iconUrl !== "") {
+                        featureIconHTML += `<div class="feature-icon">
                                                     <div class="icon-img">
                                                         <img src="${iconUrl}" alt="Tečaj vrat ${fridge.Tečaj_vrat}">
                                                     </div>
@@ -379,14 +483,14 @@ function displayFridges() {
                                                     </div>
                                                     <span class="feature-description">${doorTypeDescription}</span>
                                                 </div>`;
-        }
-      }
+                    }
+                }
 
-      if (
-        "Število_kompresorjev" in fridge &&
-        fridge.Število_kompresorjev === "1 inverterski kompresor"
-      ) {
-        featureIconHTML += `<div class="feature-icon">
+                if (
+                    "Število_kompresorjev" in fridge &&
+                    fridge.Število_kompresorjev === "1 inverterski kompresor"
+                ) {
+                    featureIconHTML += `<div class="feature-icon">
                                                 <div class="icon-img">
                                                     <img src="https://static14.gorenje.com/mabagor/imagelib/icon-spec/e/b/ebd473a2d7205da468d4b310e4083c9b_102486_fp.jpg" alt="Invertni kompresor">
                                                 </div>
@@ -395,13 +499,13 @@ function displayFridges() {
                                                 </div>
                                                 <span class="feature-description">Inverterski kompresorji so tišji, bolj vzdržljivi in porabijo manj energije v primerjavi z običajnimi kompresorji. Bolje in hitreje se prilagajajo temperaturnim spremembam v notranjosti hladilnika, na primer ob odpiranju vrat, kar pomeni manj temperaturnih nihanj in boljše pogoje za shranjevanje hrane.</span>
                                             </div>`;
-      }
+                }
 
-      if (
-        "Število_kompresorjev" in fridge &&
-        fridge.Število_kompresorjev === "1 inverterski kompresor z ventilom"
-      ) {
-        featureIconHTML += `<div class="feature-icon">
+                if (
+                    "Število_kompresorjev" in fridge &&
+                    fridge.Število_kompresorjev === "1 inverterski kompresor z ventilom"
+                ) {
+                    featureIconHTML += `<div class="feature-icon">
                                                 <div class="icon-img">
                                                     <img src="https://static14.gorenje.com/mabagor/imagelib/icon-spec/e/b/ebd473a2d7205da468d4b310e4083c9b_102486_fp.jpg" alt="Kompresor z ventilom">
                                                 </div>
@@ -410,13 +514,13 @@ function displayFridges() {
                                                 </div>
                                                 <span class="feature-description">Modeli enojnih kompresorjev z ventilom se ponašajo z opazno prednostjo pred tradicionalnimi kombiniranimi hladilniki z enim kompresorjem: pri takih napravah so nastavitve temperature v hladilniku in zamrzovalnem predelu popolnoma neodvisne. Tako se lahko hladilni prostor izklopi, medtem ko zamrzovalni del ostane v normalnem delovanju. To bo zagotovilo dodatne prihranke, ko vas dalj časa ne bo, npr. ko ste na dopustu.</span>
                                             </div>`;
-      }
+                }
 
-      if (
-        "MultiAdjust_nastavljive_police" in fridge &&
-        fridge.MultiAdjust_nastavljive_police === "Da"
-      ) {
-        featureIconHTML += `<div class="feature-icon">
+                if (
+                    "MultiAdjust_nastavljive_police" in fridge &&
+                    fridge.MultiAdjust_nastavljive_police === "Da"
+                ) {
+                    featureIconHTML += `<div class="feature-icon">
                                                 <div class="icon-img">
                                                     <img src="https://static14.gorenje.com/mabagor/imagelib/icon-spec/3/c/3cfc73cad649c088c23c27c36d328dec_102905_fp.jpg" alt="MultiAdjust_nastavljive_police">
                                                 </div>
@@ -425,10 +529,10 @@ function displayFridges() {
                                                 </div>
                                                 <span class="feature-description">Te močne steklene police lahko zelo preprosto prestavite, vstavite ali vzamete iz aparata, kar vam daje vso svobodo ureditve notranjosti v skladu z vašimi potrebami. Police iz kaljenega stekla so zelo trpežne in varno nosijo tudi večje količine hrane.</span>
                                             </div>`;
-      }
+                }
 
-      if ("Osvetlitev_hladilnega_prostora" in fridge) {
-        featureIconHTML += `<div class="feature-icon">
+                if ("Osvetlitev_hladilnega_prostora" in fridge) {
+                    featureIconHTML += `<div class="feature-icon">
                                                 <div class="icon-img">
                                                     <img src="https://static14.gorenje.com/mabagor/imagelib/icon-spec/a/c/ac12ebd62ae248806334a5a5211fc5e5_102497_fp.jpg" alt="Osvetlitev_hladilnega_prostora">
                                                 </div>
@@ -437,16 +541,16 @@ function displayFridges() {
                                                 </div>
                                                 <span class="feature-description">Ta tehnologija preprečuje nastajanje ledu v zamrzovalniku, kar zmanjšuje potrebo po ročnem odmrzovanju.</span>
                                             </div>`;
-      }
+                }
 
-      if (
-        "Ime_hladilnika" in fridge &&
-        fridge.Ime_hladilnika === "NoFrost DualAdvance"
-      ) {
-        fridgeName += `<h1>${fridge.Ime_hladilnika}</h1>`;
-      }
+                if (
+                    "Ime_hladilnika" in fridge &&
+                    fridge.Ime_hladilnika === "NoFrost DualAdvance"
+                ) {
+                    fridgeName += `<h1>${fridge.Ime_hladilnika}</h1>`;
+                }
 
-      productElement.innerHTML = `
+                productElement.innerHTML = `
                     
                     <div class=up_row>
 
@@ -498,129 +602,129 @@ function displayFridges() {
                     </div>
               
                     `;
-      fridgeList.appendChild(productElement);
-      setTimeout(() => {
-        productElement.classList.remove("enter");
-        productElement.style.opacity = "1";
-        productElement.style.transform = "translateX(0)";
-      }, 10);
-    }
-    setTimeout(setupFeatureNavigation, 0);
-    setupFeatureNavigation();
-  }
+                fridgeList.appendChild(productElement);
+                setTimeout(() => {
+                    productElement.classList.remove("enter");
+                    productElement.style.opacity = "1";
+                    productElement.style.transform = "translateX(0)";
+                }, 10);
+            }
+            setTimeout(setupFeatureNavigation, 0);
+            setupFeatureNavigation();
+        }
 
-  function setupFeatureNavigation() {
-    const featureContainers = document.querySelectorAll(".features");
+        function setupFeatureNavigation() {
+            const featureContainers = document.querySelectorAll(".features");
 
-    featureContainers.forEach((container) => {
-      const featureCount = container.querySelectorAll(".feature-icon").length;
+            featureContainers.forEach((container) => {
+                const featureCount = container.querySelectorAll(".feature-icon").length;
 
-      const iconWidth = container.querySelector(".feature-icon").offsetWidth;
-      const margin = parseFloat(
-        window.getComputedStyle(container.querySelector(".feature-icon"))
-          .marginRight
-      );
-      const scrollAmount = iconWidth + margin;
+                const iconWidth = container.querySelector(".feature-icon").offsetWidth;
+                const margin = parseFloat(
+                    window.getComputedStyle(container.querySelector(".feature-icon"))
+                        .marginRight
+                );
+                const scrollAmount = iconWidth + margin;
 
-      if (featureCount > 3) {
-        const prevButton = container.parentNode.querySelector(".features-prev");
-        const nextButton = container.parentNode.querySelector(".features-next");
+                if (featureCount > 3) {
+                    const prevButton = container.parentNode.querySelector(".features-prev");
+                    const nextButton = container.parentNode.querySelector(".features-next");
 
-        prevButton.style.display = "block";
-        nextButton.style.display = "block";
+                    prevButton.style.display = "block";
+                    nextButton.style.display = "block";
 
-        prevButton.addEventListener("click", () => {
-          container.scrollLeft -= scrollAmount;
+                    prevButton.addEventListener("click", () => {
+                        container.scrollLeft -= scrollAmount;
+                    });
+
+                    nextButton.addEventListener("click", () => {
+                        container.scrollLeft += scrollAmount;
+                    });
+                } else {
+                    container.parentNode.querySelector(".features-prev").style.display =
+                        "none";
+                    container.parentNode.querySelector(".features-next").style.display =
+                        "none";
+                }
+            });
+        }
+
+        const featureIcons = document.querySelectorAll(".feature-icon");
+
+        featureIcons.forEach((featureIcon) => {
+            featureIcon.addEventListener("mouseover", (event) => {
+                const hoveredIcon = event.target;
+                const description = hoveredIcon.querySelector(".feature-description");
+
+                const top = hoveredIcon.offsetHeight + 5;
+
+                description.style.transform = `translateY(-${top}px)`;
+            });
+
+            featureIcon.addEventListener("mouseout", () => {
+                const description = featureIcon.querySelector(".feature-description");
+                description.style.transform = "translateY(-100%)";
+            });
         });
 
-        nextButton.addEventListener("click", () => {
-          container.scrollLeft += scrollAmount;
+        showFridges(currentPosition, currentPosition + 3);
+        document.querySelector(".prev-button").addEventListener("click", () => {
+            if (currentPosition > 0) {
+                currentPosition--;
+                showFridges(currentPosition, currentPosition + 3);
+            }
         });
-      } else {
-        container.parentNode.querySelector(".features-prev").style.display =
-          "none";
-        container.parentNode.querySelector(".features-next").style.display =
-          "none";
-      }
+
+        document.querySelector(".next-button").addEventListener("click", () => {
+            if (currentPosition + 3 < data.length) {
+                currentPosition++;
+                showFridges(currentPosition, currentPosition + 3);
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            showFridges(currentPosition, currentPosition + 3);
+        });
+
+        prevButton.addEventListener("click", function () {
+            if (currentPosition > 0) {
+                currentPosition -= 1;
+                showFridges(currentPosition, currentPosition + 3);
+            }
+        });
+
+        nextButton.addEventListener("click", function () {
+            if (currentPosition + 3 < data.length) {
+                currentPosition += 1;
+                showFridges(currentPosition, currentPosition + 3);
+            }
+        });
+    }
+
+    function sortByScoreDescending(arr) {
+        return arr.sort((a, b) => b.score - a.score);
+    }
+
+    function sortByAbsoluteScoreDescending(arr) {
+        return arr.sort((a, b) => Math.abs(b.score) - Math.abs(a.score));
+    }
+
+    function sortByAbsoluteScore(arr) {
+        return arr.sort((a, b) => Math.abs(a.score) - Math.abs(b.score));
+    }
+
+    document.getElementById("chatbotButton").addEventListener("click", function () {
+        document.getElementById("chatbotContainer").style.visibility = "visible";
     });
-  }
 
-  const featureIcons = document.querySelectorAll(".feature-icon");
+    document
+        .getElementById("chatbotButton1")
+        .addEventListener("click", function () {
+            document.getElementById("chatbotContainer").style.visibility = "visible";
+        });
 
-  featureIcons.forEach((featureIcon) => {
-    featureIcon.addEventListener("mouseover", (event) => {
-      const hoveredIcon = event.target;
-      const description = hoveredIcon.querySelector(".feature-description");
-
-      const top = hoveredIcon.offsetHeight + 5;
-
-      description.style.transform = `translateY(-${top}px)`;
-    });
-
-    featureIcon.addEventListener("mouseout", () => {
-      const description = featureIcon.querySelector(".feature-description");
-      description.style.transform = "translateY(-100%)";
-    });
-  });
-
-  showFridges(currentPosition, currentPosition + 3);
-  document.querySelector(".prev-button").addEventListener("click", () => {
-    if (currentPosition > 0) {
-      currentPosition--;
-      showFridges(currentPosition, currentPosition + 3);
-    }
-  });
-
-  document.querySelector(".next-button").addEventListener("click", () => {
-    if (currentPosition + 3 < data.length) {
-      currentPosition++;
-      showFridges(currentPosition, currentPosition + 3);
-    }
-  });
-
-  window.addEventListener("resize", () => {
-    showFridges(currentPosition, currentPosition + 3);
-  });
-
-  prevButton.addEventListener("click", function () {
-    if (currentPosition > 0) {
-      currentPosition -= 1;
-      showFridges(currentPosition, currentPosition + 3);
-    }
-  });
-
-  nextButton.addEventListener("click", function () {
-    if (currentPosition + 3 < data.length) {
-      currentPosition += 1;
-      showFridges(currentPosition, currentPosition + 3);
-    }
-  });
-}
-
-function sortByScoreDescending(arr) {
-  return arr.sort((a, b) => b.score - a.score);
-}
-
-function sortByAbsoluteScoreDescending(arr) {
-  return arr.sort((a, b) => Math.abs(b.score) - Math.abs(a.score));
-}
-
-function sortByAbsoluteScore(arr) {
-  return arr.sort((a, b) => Math.abs(a.score) - Math.abs(b.score));
-}
-
-document.getElementById("chatbotButton").addEventListener("click", function () {
-  document.getElementById("chatbotContainer").style.visibility = "visible";
-});
-
-document
-  .getElementById("chatbotButton1")
-  .addEventListener("click", function () {
-    document.getElementById("chatbotContainer").style.visibility = "visible";
-  });
-
-document
-  .getElementById("chatbotButtonClose")
-  .addEventListener("click", function () {
-    document.getElementById("chatbotContainer").style.visibility = "hidden";
-  });
+    document
+        .getElementById("chatbotButtonClose")
+        .addEventListener("click", function () {
+            document.getElementById("chatbotContainer").style.visibility = "hidden";
+        });
