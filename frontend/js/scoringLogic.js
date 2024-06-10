@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log('Changing button displays');
         prevButton.style.display = 'flex';
         nextButton.style.display = 'flex';
+        document.getElementById("btn-ai-diff").style.display = "block"
     }
     
       const displayNextQuestion = () => {

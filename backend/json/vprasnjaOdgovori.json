@@ -105,8 +105,8 @@
       { "atribute": "Razred_hrupa", "type": "class" }
     ],
     "awnsers": [
-      { "text": "Yes", "value": [true] },
-      { "text": "No", "value": [false] }
+      { "text": "Da", "value": [true] },
+      { "text": "Ne", "value": [false] }
     ]
   }
 ]
