@@ -1,0 +1,23 @@
+Pametni asistent za izbor aparatov (Hisense 2)
+
+Rešitev pomaga bodočim kupcem gospodinjskih aparatov Gorenje pri izbiri najbolj primernega aparata za njihove potrebe.
+
+Leto izdelave: 2024
+
+Avtorji:
+
+Luka Črešnar
+Mateja Đurić
+Rok Krajnc
+
+Domača stran: gorenjko.westeurope.cloudapp.azure.com/chatbot.html
+
+Vir podatkov: https://si.gorenje.com/
+
+Koda: https://github.com/matejadju/Praktikum_II_ChatBot.git
+
+Kategorizacija: Interaktivna spletna storitev, Priporočilni sistem, E-trgovina, Analitični pripomoček
+
+Oznake: NodeJS, ExpressJS, Agilen razvoj, GitHub, Uporaba AI, HTML, CSS, JavaScript
+
+Pametni asistent strankam olajša izbiro pri nakupu gospodinjskih aparatov Gorenje. Z nekaj vprašanji ugotovi, kakšne so potrebe uporabnika, in na podlagi teh priporoča najboljšo izbiro za nakup. Pri končnem izpisu najbolj primernih aparatov tudi primerja te med sabo in navede, kateri aparat ima določene prednosti.

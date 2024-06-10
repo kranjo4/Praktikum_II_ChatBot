@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://localhost:3000/questions")
-    .then((response) => response.json())
-    .then((data) => {
-      const questionsRes = data.questionsAndAnswers;
-      window.sessionStorage.setItem(
-        "score",
-        JSON.stringify(data.itemsCurrentScore)
-      );
-      window.sessionStorage.setItem("questions", JSON.stringify(questionsRes));
-      window.sessionStorage.setItem("items", JSON.stringify(data.allItems));
+    fetch("http://localhost:3000/questions")
+        .then((response) => response.json())
+        .then((data) => {
+            const questionsRes = data.questionsAndAnswers;
+            window.sessionStorage.setItem(
+                "score",
+                JSON.stringify(data.itemsCurrentScore)
+            );
+            window.sessionStorage.setItem("questions", JSON.stringify(questionsRes));
+            window.sessionStorage.setItem("items", JSON.stringify(data.allItems));
 
       let questionIndex = 0;
 
@@ -58,28 +58,29 @@ document.addEventListener("DOMContentLoaded", () => {
               });
             });
 
-            messageContainer.appendChild(answerContainer);
-          });
-          chatMessages.appendChild(messageContainer);
-        } else {
-          const thanksMessage = document.createElement("div");
-          thanksMessage.textContent = "Hvala za vaše odgovore!";
-          thanksMessage.className = "thanks-message";
-          chatMessages.appendChild(thanksMessage);
-        }
-      };
+                        messageContainer.appendChild(answerContainer);
+                    });
+                    chatMessages.appendChild(messageContainer);
+                } else {
+                    const thanksMessage = document.createElement("div");
+                    thanksMessage.textContent = "Hvala za vaše odgovore!";
+                    thanksMessage.className = "thanks-message";
+                    chatMessages.appendChild(thanksMessage);
+                }
+            };
 
       displayNextQuestion();
     })
     .catch((error) => console.error("Error fetching questions:", error));
 });
 
-function sendAnswer(answer, messageContainer, callback) {
-  const currentScoreArr = JSON.parse(window.sessionStorage.getItem("score"));
-  const userAnswer = document.createElement("div");
-  userAnswer.textContent = "Izbran odgovor: " + answer.text;
-  userAnswer.className = "user-answer";
-  messageContainer.appendChild(userAnswer);
+
+    function sendAnswer(answer, messageContainer, callback) {
+        const currentScoreArr = JSON.parse(window.sessionStorage.getItem("score"));
+        const userAnswer = document.createElement("div");
+        userAnswer.textContent = "Izbran odgovor: " + answer.text;
+        userAnswer.className = "user-answer";
+        messageContainer.appendChild(userAnswer);
 
   Array.from(document.querySelectorAll(".answer-button")).forEach((button) => {
     button.remove();

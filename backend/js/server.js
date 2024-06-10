@@ -12,6 +12,10 @@ app.use(express.json());
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, "..", "public")));
 
+const modelRouter = require('../routes/model')
+const {testAPI} = require("../routes/model");
+app.use('/model', modelRouter)
+
 app.get("/questions", (req, res) => {
   const questionsAndAnswers = readJSON("vprasnjaOdgovori.json");
   const itemsCurrentScoreRead = readJSON("skup.json");
