@@ -60,13 +60,16 @@ function calculateScore(scoreArr, answer) {
                         
                         break;
                     case "compare":
+                            if(answer.value[i] == "notImportant"){
+                                break;
+                            }
                             if(!(answer.value[i] == product[curAtribute])){
                                 newScore += 10
                             }                       
                         break;
                     
                     case "class":
-                        if(answer.value[i] == "Yes"){
+                        if(answer.value[i] == true){
 
                             let sortedClass = (getUniqueRazredHrupa(products, curAtribute)).sort()
                             

@@ -1,41 +1,112 @@
 [
-  {
-      "question": "Vprasanje 4 (class)",
-      "atributes": [{"atribute":"Razred_energijske_učinkovitosti", "type": "class"}], 
-      "awnsers": [
-        { "text": "Yes", "value": ["Yes"] },
-        { "text": "No", "value": ["No"] }
-        
-      ]
-    },
-  {
-    "question": "Vprasanje 1 (budget)",
-    "atributes": [{"atribute":"Trenutna_Cena", "type": "number"}], 
+    {
+    "question": "Za koliko ljudi je ponavadi hrane v hladilniku?",
+    "atributes": [
+      { "atribute": "Skupna_prostornina", "type": "number" }
+    ],
     "awnsers": [
-      { "text": "500", "value": [500] },
-      { "text": "700", "value": [700] },
-      { "text": "900", "value": [900] },
-      { "text": "1200", "value": [1200] }
+      { "text": "Samo eno", "value": [100] },
+      { "text": "Dve osebi", "value": [200] },
+      { "text": "Družino 3-4 oseb", "value": [300] },
+      { "text": "Družino 5 ali več oseb", "value":[500] }
     ]
   },
   {
-    "question": "Vprasanje 2 (visina)",
-    "atributes": [{"atribute": "Višina_izdelka", "type": "number"}], 
+    "question": "Kakšen tip hladilnika preferiraš?",
+    "atributes": [{ "atribute": "Kategorija", "type": "compare" }],
     "awnsers": [
-      { "text": "1400", "value": [1400] },
-      { "text": "1600", "value": [1600] },
-      { "text": "1800", "value": [1800] },
-      { "text": "2000", "value": [2000] }
+      {"text": "Ni mi pomembno", "value": ["notImportant"]},
+      {"text": "Štirivratni hladilnik", "value": ["Štirivratni hladilnik"]},
+      {"text": "Side by Side", "value": ["Side by Side"]},
+      {"text": "Hladilnik z zamrzovalnikom", "value":  ["Hladilnik z zamrzovalnikom"]}, 
+      {"text": "Hladilnik", "value": ["Hladilnik"]},
+      {"text": "Dvovratni hladilnik s predalom", "value":  ["Dvovratni hladilnik s predalom"]}, 
+      {"text": "Zamrzovalna omara", "value": ["Zamrzovalna omara"]},
+      {"text": "Zamrzovalna skrinja", "value": ["Zamrzovalna skrinja"]}
+  
     ]
   },
   {
-    "question": "Vprasanje 3 (no frost)",
-    "atributes": [{"atribute": "NoFrost", "type": "compare"}], 
+    "question": "V katero skupino bi rekli da spadate?",
+    "atributes": [{ "atribute": "Trenutna_Cena", "type": "number" }],
     "awnsers": [
-      { "text": "Nima", "value": [null] },
-      { "text": "NoFrost", "value": ["NoFrost"] },
-      { "text": "NoFrost Plus", "value": ["NoFrost Plus"] },
-      { "text": "NoFrost DualAdvance", "value": ["NoFrost DualAdvance"] }
+      { "text": "Študenetje", "value": [500] },
+      { "text": "Odrasli", "value": [2500] },
+      { "text": "Upokojenci", "value": [1000] }
+    ]
+  },
+  {
+    "question": "Kolikokrat na teden običajno nakupuješ živila?",
+    "atributes": [
+      { "atribute": "CrispZone_predal_s_SmartHumidity", "type": "compare" },
+      { "atribute": "CrispZone_z_VitaLight_in_SmartHumidity", "type": "compare" },
+      { "atribute": "CrispZone_predal_za_zelenjavo", "type": "compare" }
+    ],
+    "awnsers": [
+      { "text": "Večkrat na teden", "value": ["notImportant", "notImportant", "notImportant"] },
+      { "text": "Enkrat na teden", "value": ["notImportant", "notImportant", "notImportant"] },
+      { "text": "Na vsakih 14 dni", "value": ["Da", "Da","Da"] },
+      { "text": "Enkrat na mesec", "value": ["Da","Da","Da"] }
+    ]
+  },
+  {
+    "question": "Kateri način shranjevanja živil imaš raje?",
+    "atributes": [
+      { "atribute": "CrispZone_predal_s_SmartHumidity", "type": "compare" },
+      { "atribute": "CrispZone_z_VitaLight_in_SmartHumidity", "type": "compare" },
+      { "atribute": "CrispZone_predal_za_zelenjavo", "type": "compare" },
+      { "atribute": "Prostornina_hladilnega_prostora", "type": "number" },
+      { "atribute": "Prostornina_zamrzovalnega_prostora", "type": "number" }
+    ],
+    "awnsers": [
+      { "text": "Večinoma sveža živila", "value": ["Da", "Da","Da", 0, 0] },
+      { "text": "Predpakirana in pripravljena hrana", "value":["notImportant", "notImportant", "notImportant", 300, 0] },
+      { "text": "Veliko zamrznjenih izdelkov", "value": ["notImportant", "notImportant", "notImportant", 0, 120] }
+    ]
+  },
+  {
+    "question": "Ali vam je pomembno da je hladilnik energetsko učinkovit?",
+    "atributes": [
+      { "atribute": "Razred_energijske_učinkovitosti", "type": "class" }
+    ],
+    "awnsers": [
+      { "text": "Da", "value": [true] },
+      { "text": "Ne", "value": [false] }
+    ]
+  },
+  {
+    "question": "Koliko prostora v kuhinji imaš na voljo za hladilnik?",
+    "atributes": [
+
+      { "atribute": "Širina_izdelka", "type": "number" },
+      { "atribute": "Višina_izdelka", "type": "number" },
+      { "atribute": "Globina_izdelka", "type": "number" }
+    ],
+    "awnsers": [
+      { "text": "Zelo malo prostora", "value": [400, 800, 500] },
+      { "text": "Omejen prostor", "value": [600, 1200, 575] },
+      { "text": "Prostorna kuhinja", "value": [800, 1500, 650] },
+      { "text": "Prostor ni omejitev", "value": [1000, 1800, 750] }
+    ]
+  },
+  {
+    "question": "Kaj vam je pomembno pri zmrzovalnem prostoru?",
+    "atributes": [{ "atribute": "NoFrost", "type": "compare" }],
+    "awnsers": [
+      { "text": "Ni mi pomembno", "value": ["notImportant" ] },
+      { "text": "Da se led ne nabira", "value": ["NoFrost"] },
+      { "text": "Da se led ne nabira in da deljuje varčno", "value": ["NoFrost Plus"] },
+      { "text": "Da se led ne nabira in da ima več prostora", "value": ["NoFrost DualAdvance"] }
+    ]
+  },
+  {
+    "question": "Ali vam je pomembna tišina delovanja hladilnika?",
+    "atributes": [
+      { "atribute": "Razred_hrupa", "type": "class" }
+    ],
+    "awnsers": [
+      { "text": "Yes", "value": [true] },
+      { "text": "No", "value": [false] }
     ]
   }
 ]

@@ -1,60 +1,203 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#fridge-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 20px;
+    overflow-x: hidden;
+    max-width: 80vw;
+}
+
 .product {
-    border: 1px solid #ddd; 
-    margin-bottom: 20px; 
-    padding: 10px; 
-    border-radius: 5px; 
+    display: flex;
+    flex-direction: column;
+    height: 30rem;
+    min-width: 23vw;
+    border: 1px solid #ccc;
+    padding: 10px;
+    /* background-color: #f9f9f9; */
+    border: 2px solid #dde4e8;
+
+    transition: transform 0.5s ease, opacity 0.3s ease;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.product.exit {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.product.enter {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.product h2 {
+    font-size: 20px;
+    color: darkblue;
+    flex: 0;
+    margin: 0;
+}
+
+.product p {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    flex: 0;
+    margin: 0;
+}
+
+.product ul {
+    flex: 1;
+    /* list-style: none;  */
+    margin: 0;
+    padding: 0;
+}
+
+.product li {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bot-container {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bot-container_bot_name p {
+    font-size: 1.5rem;
+    line-height: 2.375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #5a6780;
+}
+
+.bot-container_dynamic_question p {
+    color: #9da6ab;
+    font-weight: 400;
+}
+
+.question input {
+    display: block;
+    border: solid;
+    color: #9da6ab;
+    padding: 0.5rem 6rem 0.5rem 6rem;
+}
+
+.bot-container_dynamic_answers {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 2rem;
+
+}
+
+.answer {
+    border: solid;
+    padding: 5rem;
+    margin: 1rem;
+}
+
+.button-navigations {
+    display: flex;
+}
+
+.button-navigations svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.button-navigations image {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.button-navigations .prev-button,
+.next-button {
+    display: none;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
 }
 
 .fridge-name {
-    color: #333; 
-    font-size: 18px; 
-    margin-bottom: 5px; 
+    font-size: .8125rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #5a6870
 }
 
 .fridge-specs {
-    padding: 0; 
+    padding: 0;
     color: #5a6870;
     font-size: .9375rem;
     line-height: 1.0625rem;
 }
 
 .fridge-specs li {
-    font-size: 14px; 
-    margin-bottom: 3px; 
+    font-size: 14px;
+    margin-bottom: 3px;
 }
 
 a {
-    text-decoration: none; 
-    color: #007BFF; 
+    text-decoration: none;
+    color: #007BFF;
 }
 
 a:hover {
-    text-decoration: underline; 
+    text-decoration: underline;
 }
 
 .up_row {
     display: flex;
-    align-items: flex-start; 
-    margin-bottom: 10px; 
+    align-items: flex-start;
+    /* margin-bottom: 10px; */
+    /* min-height: 55%; */
+    flex: 1;
+    /* z-index: 0;
+    position: relative; */
 }
 
 .up_row h2 {
     color: #5A6870;
-    font-size: 13px;
+    font-size: .8125rem;
+    font-weight: 700;
 }
 
 .img_container {
-    width: 150px; 
-    height: 150px; 
-    overflow: hidden; 
-    margin-right: 20px; 
+    display: flex;
+    justify-content: center;
+    width: 205px;
+    height: 190px;
+    overflow: hidden;
+    /* margin-right: 20px; */
 }
 
 .img_container img {
-    width: 100%; 
-    height: 100%; 
-    object-fit: contain; 
-    border-radius: 8px; 
+    max-width: 100%;
+    height: 190px;
+    /* margin: 0px 44px; */
+    /* padding: 5px 30px; */
+    object-fit: contain;
+    border-radius: 8px;
 }
 
 .efficency-class img {
@@ -66,9 +209,9 @@ a:hover {
     justify-content: flex-end;
 }
 
-.price-new { 
+.price-new {
     font-size: 1.875rem;
-    color: #ec008c; 
+    color: #ec008c;
 }
 
 .price-old {
@@ -80,3 +223,233 @@ a:hover {
     min-height: 13px;
 }
 
+.features {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* gap: 2rem; */
+    overflow-x: hidden;
+    /* width: 100%; */
+    justify-content: space-around;
+    /* overflow-x: auto; */
+    scroll-behavior: smooth;
+}
+
+
+.feature-icon {
+    /* position: relative; */
+    display: flex;
+    flex: 1 0 33%;
+    flex-direction: column;
+    align-items: center;
+    min-width: 1.8rem;
+    padding: 15px;
+    box-sizing: border-box;
+    /* border-bottom: 2px solid transparent; */
+}
+
+.feature-icon .icon-text p {
+    font-size: .75rem;
+    line-height: .9375rem;
+    padding: 1.25rem 2.1875rem .9375rem;
+    text-align: center;
+}
+
+.feature-icon .icon-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.feature-icon img {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.feature-icon:hover {
+    color: #00b9ad;
+    box-shadow: inset 0 -2px 0 0 #00b9ad;
+}
+
+
+.feature-icon:hover p {
+    color: #00b9ad;
+    max-width: fit-content;
+}
+
+.features-container {
+    /* width: 320px; */
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.features-prev,
+.features-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+.feature-description {
+    color: #9da6ab;
+    font-size: .875rem;
+    line-height: 1.4375rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -83%);
+    z-index: 1;
+    background-color: #fff;
+    text-align: center;
+    padding: .975rem .5rem;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    display: none;
+    width: 70%;
+}
+
+.feature-icon:hover .feature-description {
+    display: block;
+}
+
+.features-container image {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+.stats_container {
+    font-size: 16px;
+    line-height: 1.428571429;
+    width: 50%;
+}
+
+.stats_container h1 {
+    font-size: 16px;
+    line-height: 1.428571429;
+    font-weight: 700;
+    color: #5a6780;
+    max-width: 190px;
+}
+
+@media (max-width: 900px) {
+    #fridge-list {
+        /* grid-template-columns: repeat(2, 1fr); */
+        max-width: 80vw;
+    }
+
+    .product {
+        min-width: 37vw;
+    }
+
+
+}
+
+
+@media screen and (max-width: 767px) {
+
+    #fridge-list {
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        max-width: 80vw;
+    }
+
+    .feature-description {
+        color: #9da6ab;
+        font-size: .875rem;
+        line-height: 1.4375rem;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -110%);
+        z-index: 1;
+        background-color: #fff;
+        text-align: center;
+        padding: .975rem .5rem;
+        border-radius: 5px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        display: none;
+        width: 70%;
+    }
+
+    .features-container {
+        max-width: 100%;
+    }
+
+    .feature-icon {
+        /* position: relative; */
+        display: flex;
+        flex: 1 0 34%;
+        flex-direction: column;
+        align-items: center;
+
+        box-sizing: border-box;
+        /* border-bottom: 2px solid transparent; */
+    }
+
+    #fridge-list .img_container {
+        flex: 1;
+    }
+
+    #fridge-list .stats_container {
+        flex: 2;
+    }
+
+    .bottom_row {
+        display: flex;
+
+    }
+
+    .bottom_row .checkbox {
+        flex: 1;
+    }
+
+    .bottom_row .stats_container {
+        flex: 2;
+        text-align: right;
+        padding-right: 10%;
+    }
+
+    .price-new {
+        font-size: 20px;
+
+    }
+
+    .price-old {
+        font-size: 13px;
+    }
+
+    .fridge-specs,
+    .fridge-name {
+        padding: 0 10px;
+        font-size: 13px;
+        line-height: 1.428571429;
+    }
+
+    .img_container {
+        padding: 0 10px;
+    }
+
+    html {
+        overflow-x: hidden;
+    }
+
+    .fridge-name {
+        color: #5A6870;
+        font-weight: 400;
+    }
+
+    .button-container  {
+        display: none;
+    }
+}
