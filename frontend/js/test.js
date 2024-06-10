@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://localhost:3000/questions')
+    fetch('20.224.22.66:3000/questions')
         .then(response => response.json())
         .then(data => {
             const questionsRes = data.questionsAndAnswers;
@@ -58,7 +58,7 @@ function sendAnswer(answer, callback) {
         currentScoreArr
     };
 
-    fetch('http://localhost:3000/send-answer', {
+    fetch('20.224.22.66:3000/send-answer', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -93,7 +93,7 @@ function loadResponse() {
         products: productsForSend
     }
 
-    fetch("http://localhost:3000/model/generate", {
+    fetch("20.224.22.66:3000/model/generate", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
