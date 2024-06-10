@@ -10,7 +10,7 @@ const getChat = async (products) => {
         stream: false
     };
     try {
-        const response = await axios.post("http://127.0.0.1:11434/api/generate", payload);
+        const response = await axios.post("20.224.22.66:11434/api/generate", payload);
         console.log('API response:', response);
         return response?.data;
     } catch (error){
